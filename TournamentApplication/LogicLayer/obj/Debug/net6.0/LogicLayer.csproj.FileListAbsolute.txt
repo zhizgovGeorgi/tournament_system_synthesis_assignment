@@ -1,0 +1,5 @@
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\LogicLayer\obj\Debug\net6.0\LogicLayer.csproj.AssemblyReference.cache
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\LogicLayer\obj\Debug\net6.0\LogicLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\LogicLayer\obj\Debug\net6.0\LogicLayer.AssemblyInfoInputs.cache
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\LogicLayer\obj\Debug\net6.0\LogicLayer.AssemblyInfo.cs
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\LogicLayer\obj\Debug\net6.0\LogicLayer.csproj.CoreCompileInputs.cache

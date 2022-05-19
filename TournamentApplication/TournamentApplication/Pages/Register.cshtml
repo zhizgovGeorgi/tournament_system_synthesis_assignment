@@ -1,0 +1,43 @@
+﻿@page
+@model TournamentWebApplication.Pages.RegisterModel
+@{
+    ViewData["Title"] = "RegisterPage";
+}
+<body>
+
+    <header>
+
+        <form method="post">
+
+
+            <div class="register">
+                <label> Name:</label> <span asp-validation-for="register.FName"></span>
+                <input asp-for="register.FName" id="name">
+                <label> Surname:</label> <span asp-validation-for="register.LName"></span>
+                <input asp-for="register.LName" id="surname">
+                <label> Email:</label> <span asp-validation-for="register.Email"></span>
+                <input asp-for="register.Email" id="email">
+                <label> Adress:</label> <span asp-validation-for="register.Email"></span>
+                <input asp-for="register.Adress" id="adress">
+                <label> Password:</label> <span asp-validation-for="register.Password"></span>
+                <input type="password" asp-for="register.Password" id="password">
+                <input type="submit" value="Register" />
+                <button type="submit">Register</button>
+
+
+            </div>
+
+        </form>
+
+
+
+    </header>
+
+
+
+</body>
+
+</html>
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

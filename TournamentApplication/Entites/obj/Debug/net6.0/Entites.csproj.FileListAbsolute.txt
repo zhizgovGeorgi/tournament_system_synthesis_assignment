@@ -1,0 +1,12 @@
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\Entites\bin\Debug\net6.0\Entites.deps.json
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\Entites\bin\Debug\net6.0\Entites.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\Entites\bin\Debug\net6.0\Entites.pdb
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\Entites\obj\Debug\net6.0\Entites.csproj.AssemblyReference.cache
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\Entites\obj\Debug\net6.0\Entites.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\Entites\obj\Debug\net6.0\Entites.AssemblyInfoInputs.cache
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\Entites\obj\Debug\net6.0\Entites.AssemblyInfo.cs
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\Entites\obj\Debug\net6.0\Entites.csproj.CoreCompileInputs.cache
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\Entites\obj\Debug\net6.0\Entites.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\Entites\obj\Debug\net6.0\refint\Entites.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\Entites\obj\Debug\net6.0\Entites.pdb
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\Entites\obj\Debug\net6.0\ref\Entites.dll

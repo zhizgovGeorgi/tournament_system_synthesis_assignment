@@ -1,0 +1,58 @@
+*{
+
+}
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+span{
+    color: red;
+}
+
+.register,.login {
+    text-align: center;
+    margin-top: 4rem;
+    margin-left: 4rem;
+    justify-content: space-between;
+}
+
+    .register input, .login input,
+    .register label, .login label,
+    .register textarea, .login textarea {
+        display: block;
+        font-size: 1.7rem;
+    }
+
+    .register input, .login input
+    .register textarea, .login textarea {
+        margin: 1rem auto;
+        width: 50%;
+    }
+
+    .register label, .login label {
+        margin-bottom: 2rem;
+    }
+
+    .register button, .login button {
+        margin-bottom: 10rem;
+        padding: 1rem 4rem;
+        background: rgb(24, 143, 212);
+        border: none;
+        color: white;
+        width: 40%;
+    }

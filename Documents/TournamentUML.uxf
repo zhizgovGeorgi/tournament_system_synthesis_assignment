@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>580</y>
+      <w>290</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>Tournament
+--
+- id: int
+- n: int 
+- sportType: SportType
+- description: string
+- startDate: DateTime
+- endDate: DateTime
+- minCompetitors: int
+- maxCompetitors: int
+- adress: string
+- tournamentSystem: TournamentSystem
+--
++ Tournament(id: int, sportType: SportType
+startDate: DateTime, endDate: DateTime,
+minCompetitors: int,maxCompetitors: int,
+adress: string, tournamentSystem: string) 
++ Tournament( sportType: SportType
+startDate: DateTime, endDate: DateTime,
+minCompetitors: int,maxCompetitors: int,
+adress: string, tournamentSystem: string)
++ Tournament()
++ ToString(): string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>0</y>
+      <w>290</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>TournamentManager
+--
+
+--
++ AddTournament(t: Tournament): void
++ RemoveTournament(t: Tournament): void
++ GetTournaments(): List&lt;Tournaments&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>410</x>
+      <y>100</y>
+      <w>110</w>
+      <h>500</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=*tournaments</panel_attributes>
+    <additional_attributes>10.0;480.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>950</x>
+      <y>590</y>
+      <w>290</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>User
+--
+- id: int
+- fName: string
+- lName: string
+- email: string
+- adress: string
+- password: string
+- role: string
+--
++ User( id: int, fName: string, lName: string,
+email: string, adress: string, password: string,
+role: string)
++ User( fName: string, lName: string,
+email: string, adress: string, password: string,
+role: string)
++ User()
++ ToString(): string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1090</x>
+      <y>120</y>
+      <w>70</w>
+      <h>490</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=*users</panel_attributes>
+    <additional_attributes>10.0;470.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>970</x>
+      <y>10</y>
+      <w>290</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>UserManager
+--
+
+--
++ AddUser(u: User): void
++ RemoveUser(u: User): void
++ EditUser(u: User): void
++ GetUser(): List&lt;User&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>700</y>
+      <w>430</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1= *tournaments
+m2= users*</panel_attributes>
+    <additional_attributes>10.0;10.0;410.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>250</x>
+      <y>1120</y>
+      <w>290</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>/TournamentSystem/
+--
+
+--
+/+ TournamentSystem()/
+/+ CalculateRounds(n: int): int/
+/+ CalculateMatches(n: int): void/
+/+ CreateMatchSchedule(competitors: /
+/List&lt;User&gt;): void/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>380</x>
+      <y>1270</y>
+      <w>330</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0;310.0;170.0;310.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>570</x>
+      <y>1590</y>
+      <w>290</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>RoundRobin
+--
+
+--
++ RoundRobin()
++ CalculateRounds(n: int): int
++ CalculateMatches(n: int): void
++ CreateMatchSchedule(competitors: 
+List&lt;User&gt;): List&lt;Match&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>930</y>
+      <w>30</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;190.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>30</x>
+      <y>690</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>N is for competitors
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1080</x>
+      <y>1470</y>
+      <w>230</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Match
+--
+- roundNr: int
+- matchNr: int
+--
++ Match(roundNr: int,matchNr: int,
+player1: User, player2: User )
++ Match()
++ ToString(): string
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1420</x>
+      <y>1500</y>
+      <w>120</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Player
+--
+- player: User
+- score: int
+--
++ Player()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1300</x>
+      <y>1510</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2= 2</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>870</y>
+      <w>560</w>
+      <h>670</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=matches*</panel_attributes>
+    <additional_attributes>540.0;640.0;270.0;640.0;270.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

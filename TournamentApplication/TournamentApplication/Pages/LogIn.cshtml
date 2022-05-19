@@ -1,0 +1,36 @@
+﻿@page
+@model TournamentApplication.Pages.LogInModel
+@{
+    ViewData["Title"] = "Log In";
+}
+
+
+<body>
+
+    <header>
+        <form method="post">
+
+            <div class="register">
+                <label for="info">Enter your credentials in order to log in: </label>
+                <label> Email:</label> <span asp-validation-for="logIn.Email"></span>
+                <input asp-for="logIn.Email" id="email">
+                <label>Password:</label> <span asp-validation-for="logIn.Password"></span>
+                <input type="password" asp-for="logIn.Password" id="password">
+                <input type="submit" value="Log In" />
+
+
+            </div>
+
+        </form>
+
+    </header>
+
+
+
+
+</body>
+
+</html>
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,37 @@
+﻿@page
+@using System.Security.Claims
+@model TournamentWebApplication.Pages.ProfileModel
+@{
+    ViewData["Title"] = "Profile";
+}
+<body>
+
+    <header>
+        <form method="post">
+
+            <div class="profile">
+
+                <p class="paragraph">First Name:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value</p>
+                <p class="paragraph">Last Name:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname).Value</p>
+                <p class="paragraph">Email:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value</p>
+                <p class="paragraph">Adress:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.StreetAddress).Value</p>
+                @if (User.IsInRole("Administrator"))
+                {
+                    <p class="paragraph">Role:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value</p>
+
+                }
+
+                <input type="submit" value="Log out" />
+            </div>
+        </form>
+
+    </header>
+
+
+
+
+</body>
+
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
