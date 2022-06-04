@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "DAL/1.0.0": {
         "dependencies": {
-          "Entites": "1.0.0",
+          "LogicLayer": "1.0.0",
           "MySql.Data": "8.0.29"
         },
         "runtime": {
@@ -210,9 +210,9 @@
           }
         }
       },
-      "Entites/1.0.0": {
+      "LogicLayer/1.0.0": {
         "runtime": {
-          "Entites.dll": {}
+          "LogicLayer.dll": {}
         }
       }
     }
@@ -356,7 +356,7 @@
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
     },
-    "Entites/1.0.0": {
+    "LogicLayer/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

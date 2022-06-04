@@ -1,0 +1,34 @@
+﻿@page
+@model TournamentWebApplication.Pages.TournamentsModel
+@{
+}
+@using LogicLayer;
+@inject ITournamentManager tm;
+<div class="tournaments">
+
+    @foreach (Tournament t in tm.GetAllTournaments())
+    {
+
+        if (t.Status == Status.UPCOMING)
+        {
+            <form method="post">
+                <div class="tournament">
+                    <div class="tournInfo">
+                        <p>@t.Name</p>
+                        <p>@t.StartDate.ToShortDateString()</p>
+                    </div>
+                    <div class="float">
+                        <a class="button" href="ShowTournament?id=@t.Id" type="submit" value="Check">check</a>
+                    </div>
+                </div>
+            </form>
+        }
+
+
+
+
+
+    }
+
+</div>
+

@@ -9,7 +9,6 @@
       "TournamentWebApplication/1.0.0": {
         "dependencies": {
           "DAL": "1.0.0",
-          "Entites": "1.0.0",
           "LogicLayer": "1.0.0"
         },
         "runtime": {
@@ -213,22 +212,14 @@
       },
       "DAL/1.0.0": {
         "dependencies": {
-          "Entites": "1.0.0",
+          "LogicLayer": "1.0.0",
           "MySql.Data": "8.0.29"
         },
         "runtime": {
           "DAL.dll": {}
         }
       },
-      "Entites/1.0.0": {
-        "runtime": {
-          "Entites.dll": {}
-        }
-      },
       "LogicLayer/1.0.0": {
-        "dependencies": {
-          "Entites": "1.0.0"
-        },
         "runtime": {
           "LogicLayer.dll": {}
         }
@@ -375,11 +366,6 @@
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
     },
     "DAL/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Entites/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

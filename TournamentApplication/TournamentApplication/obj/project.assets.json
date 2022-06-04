@@ -275,7 +275,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Entites": "1.0.0",
+          "LogicLayer": "1.0.0",
           "MySql.Data": "8.0.29"
         },
         "compile": {
@@ -283,16 +283,6 @@
         },
         "runtime": {
           "bin/placeholder/DAL.dll": {}
-        }
-      },
-      "Entites/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/Entites.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Entites.dll": {}
         }
       },
       "LogicLayer/1.0.0": {
@@ -884,11 +874,6 @@
       "path": "../DAL/DAL.csproj",
       "msbuildProject": "../DAL/DAL.csproj"
     },
-    "Entites/1.0.0": {
-      "type": "project",
-      "path": "../Entites/Entites.csproj",
-      "msbuildProject": "../Entites/Entites.csproj"
-    },
     "LogicLayer/1.0.0": {
       "type": "project",
       "path": "../LogicLayer/LogicLayer.csproj",
@@ -898,7 +883,6 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "DAL >= 1.0.0",
-      "Entites >= 1.0.0",
       "LogicLayer >= 1.0.0"
     ]
   },
@@ -931,9 +915,6 @@
           "projectReferences": {
             "C:\\Users\\Georgi\\Desktop\\SynthesisAssignment_ Badminton System\\sport_system_synthesis_assignment\\TournamentApplication\\DAL\\DAL.csproj": {
               "projectPath": "C:\\Users\\Georgi\\Desktop\\SynthesisAssignment_ Badminton System\\sport_system_synthesis_assignment\\TournamentApplication\\DAL\\DAL.csproj"
-            },
-            "C:\\Users\\Georgi\\Desktop\\SynthesisAssignment_ Badminton System\\sport_system_synthesis_assignment\\TournamentApplication\\Entites\\Entites.csproj": {
-              "projectPath": "C:\\Users\\Georgi\\Desktop\\SynthesisAssignment_ Badminton System\\sport_system_synthesis_assignment\\TournamentApplication\\Entites\\Entites.csproj"
             },
             "C:\\Users\\Georgi\\Desktop\\SynthesisAssignment_ Badminton System\\sport_system_synthesis_assignment\\TournamentApplication\\LogicLayer\\LogicLayer.csproj": {
               "projectPath": "C:\\Users\\Georgi\\Desktop\\SynthesisAssignment_ Badminton System\\sport_system_synthesis_assignment\\TournamentApplication\\LogicLayer\\LogicLayer.csproj"

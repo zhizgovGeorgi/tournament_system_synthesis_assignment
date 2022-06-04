@@ -14,5 +14,11 @@ namespace LogicLayer
         void AddTournament(Tournament t);
 
         void EditUser(Tournament t);
+
+        void UpdateTournamentStatus(Tournament t, Status status);
+
+        void SignForTournament(Tournament t, User u);
+
+        void GetAllTournamentsAndParticipants(List<Tournament> tournaments);
     }
 }

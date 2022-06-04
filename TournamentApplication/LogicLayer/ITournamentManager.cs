@@ -13,7 +13,10 @@ namespace LogicLayer
         void RemoveTournament(Tournament t);
 
         Tournament GetTournament(Tournament t);
-
+        Tournament GetTournament(int id);
+        Tournament GetTournament(string name);
+        bool SignForTournament(Tournament t, User u);
         List<Tournament> GetAllTournaments();
+        void UpdateTournamentStatus(Tournament t, Status status);
     }
 }

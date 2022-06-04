@@ -1,30 +1,30 @@
-*{
-
+* {
 }
+
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
-span{
+span {
     color: red;
 }
 
-.register,.login {
+.register, .login {
     text-align: center;
     margin-top: 4rem;
     margin-left: 4rem;
@@ -38,11 +38,11 @@ span{
         font-size: 1.7rem;
     }
 
-    .register input, .login input
-    .register textarea, .login textarea {
-        margin: 1rem auto;
-        width: 50%;
-    }
+        .register input, .login input
+        .register textarea, .login textarea {
+            margin: 1rem auto;
+            width: 50%;
+        }
 
     .register label, .login label {
         margin-bottom: 2rem;
@@ -56,3 +56,34 @@ span{
         color: white;
         width: 40%;
     }
+
+.tournament {
+    min-width: 100px;
+    width: auto;
+    min-height: 100px;
+    background-color: grey;
+    margin-bottom: 20px;
+    padding: 30px;
+    font-size: 30px;
+    border-radius: 5px;
+    display: flex;
+}
+    .tournament a {
+        margin: 20px;
+        text-decoration: none;
+        color: black;
+        background-color: white;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 5px;
+    }
+
+.tournamentInfo {
+display:block;
+max-width: 200px;
+}
+
+.float{
+    margin-left:990px;
+    float: right;
+}

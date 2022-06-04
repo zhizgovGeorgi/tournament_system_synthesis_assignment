@@ -1,3 +1,5 @@
+using LogicLayer;
+
 namespace TournamentDesktopApplication
 {
     public partial class DesktopApp : Form
@@ -6,11 +8,15 @@ namespace TournamentDesktopApplication
         private Random random;
         private int tempIndex;
         private Form activeFrom;
-        public DesktopApp()
+        private readonly ITournamentManager tm;
+        private readonly IMatchManager mm;
+        public DesktopApp(ITournamentManager tm, IMatchManager mm)
         {
             InitializeComponent();
             random = new Random();
             btnReset.Visible = false;
+            this.tm = tm;
+            this.mm = mm;
         }
 
         private Color SelectThemeColour()
@@ -84,7 +90,7 @@ namespace TournamentDesktopApplication
 
         private void btnTournaments_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.TournamentManagement(), sender);
+            OpenChildForm(new Forms.TournamentManagement(tm), sender);
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -108,7 +114,7 @@ namespace TournamentDesktopApplication
 
         private void btnResults_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.ResultsManagement(), sender);
+            OpenChildForm(new Forms.ResultsManagement(tm, mm), sender);
         }
     }
 }

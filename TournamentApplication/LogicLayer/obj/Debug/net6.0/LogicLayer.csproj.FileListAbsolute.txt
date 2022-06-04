@@ -3,3 +3,10 @@ C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synth
 C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\LogicLayer\obj\Debug\net6.0\LogicLayer.AssemblyInfoInputs.cache
 C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\LogicLayer\obj\Debug\net6.0\LogicLayer.AssemblyInfo.cs
 C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\LogicLayer\obj\Debug\net6.0\LogicLayer.csproj.CoreCompileInputs.cache
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\LogicLayer\bin\Debug\net6.0\LogicLayer.deps.json
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\LogicLayer\bin\Debug\net6.0\LogicLayer.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\LogicLayer\bin\Debug\net6.0\LogicLayer.pdb
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\LogicLayer\obj\Debug\net6.0\LogicLayer.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\LogicLayer\obj\Debug\net6.0\refint\LogicLayer.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\LogicLayer\obj\Debug\net6.0\LogicLayer.pdb
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\LogicLayer\obj\Debug\net6.0\ref\LogicLayer.dll

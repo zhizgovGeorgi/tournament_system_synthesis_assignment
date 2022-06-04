@@ -35,6 +35,10 @@
             this.numPlayer2 = new System.Windows.Forms.NumericUpDown();
             this.btnSaveResult = new System.Windows.Forms.Button();
             this.lblResultManagement = new System.Windows.Forms.Label();
+            this.lblTournaments = new System.Windows.Forms.Label();
+            this.lblRounds = new System.Windows.Forms.Label();
+            this.lblMatch = new System.Windows.Forms.Label();
+            this.btnGenerateSchedule = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numPlayer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPlayer2)).BeginInit();
             this.SuspendLayout();
@@ -47,15 +51,18 @@
             this.lbTournaments.Name = "lbTournaments";
             this.lbTournaments.Size = new System.Drawing.Size(138, 304);
             this.lbTournaments.TabIndex = 0;
+            this.lbTournaments.SelectedIndexChanged += new System.EventHandler(this.lbTournaments_SelectedIndexChanged);
+            this.lbTournaments.DoubleClick += new System.EventHandler(this.lbTournaments_DoubleClick);
             // 
             // lbRounds
             // 
             this.lbRounds.FormattingEnabled = true;
             this.lbRounds.ItemHeight = 15;
-            this.lbRounds.Location = new System.Drawing.Point(240, 80);
+            this.lbRounds.Location = new System.Drawing.Point(221, 80);
             this.lbRounds.Name = "lbRounds";
-            this.lbRounds.Size = new System.Drawing.Size(48, 304);
+            this.lbRounds.Size = new System.Drawing.Size(86, 304);
             this.lbRounds.TabIndex = 1;
+            this.lbRounds.DoubleClick += new System.EventHandler(this.lbRounds_DoubleClick);
             // 
             // lbMatches
             // 
@@ -89,6 +96,7 @@
             this.btnSaveResult.TabIndex = 5;
             this.btnSaveResult.Text = "Save Result";
             this.btnSaveResult.UseVisualStyleBackColor = true;
+            this.btnSaveResult.Click += new System.EventHandler(this.btnSaveResult_Click);
             // 
             // lblResultManagement
             // 
@@ -100,11 +108,53 @@
             this.lblResultManagement.TabIndex = 6;
             this.lblResultManagement.Text = "Result Management";
             // 
+            // lblTournaments
+            // 
+            this.lblTournaments.AutoSize = true;
+            this.lblTournaments.Location = new System.Drawing.Point(40, 56);
+            this.lblTournaments.Name = "lblTournaments";
+            this.lblTournaments.Size = new System.Drawing.Size(76, 15);
+            this.lblTournaments.TabIndex = 7;
+            this.lblTournaments.Text = "Tournaments";
+            // 
+            // lblRounds
+            // 
+            this.lblRounds.AutoSize = true;
+            this.lblRounds.Location = new System.Drawing.Point(221, 56);
+            this.lblRounds.Name = "lblRounds";
+            this.lblRounds.Size = new System.Drawing.Size(47, 15);
+            this.lblRounds.TabIndex = 8;
+            this.lblRounds.Text = "Rounds";
+            // 
+            // lblMatch
+            // 
+            this.lblMatch.AutoSize = true;
+            this.lblMatch.Location = new System.Drawing.Point(348, 56);
+            this.lblMatch.Name = "lblMatch";
+            this.lblMatch.Size = new System.Drawing.Size(52, 15);
+            this.lblMatch.TabIndex = 9;
+            this.lblMatch.Text = "Matches";
+            // 
+            // btnGenerateSchedule
+            // 
+            this.btnGenerateSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerateSchedule.Location = new System.Drawing.Point(670, 346);
+            this.btnGenerateSchedule.Name = "btnGenerateSchedule";
+            this.btnGenerateSchedule.Size = new System.Drawing.Size(96, 47);
+            this.btnGenerateSchedule.TabIndex = 10;
+            this.btnGenerateSchedule.Text = "Generate Schedule";
+            this.btnGenerateSchedule.UseVisualStyleBackColor = true;
+            this.btnGenerateSchedule.Click += new System.EventHandler(this.btnGenerateSchedule_Click);
+            // 
             // ResultsManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnGenerateSchedule);
+            this.Controls.Add(this.lblMatch);
+            this.Controls.Add(this.lblRounds);
+            this.Controls.Add(this.lblTournaments);
             this.Controls.Add(this.lblResultManagement);
             this.Controls.Add(this.btnSaveResult);
             this.Controls.Add(this.numPlayer2);
@@ -131,5 +181,9 @@
         private NumericUpDown numPlayer2;
         private Button btnSaveResult;
         private Label lblResultManagement;
+        private Label lblTournaments;
+        private Label lblRounds;
+        private Label lblMatch;
+        private Button btnGenerateSchedule;
     }
 }

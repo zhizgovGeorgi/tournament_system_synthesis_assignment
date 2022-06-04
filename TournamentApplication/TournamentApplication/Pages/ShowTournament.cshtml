@@ -1,0 +1,30 @@
+﻿@page
+@model TournamentWebApplication.Pages.ShowTournamentModel
+@{
+    Tournament t = Model.t;
+}
+@using LogicLayer;
+@using System.Security.Claims
+
+<div class="showTournament">
+    <form method="post">
+        <h1>Tournament - @t.Name</h1>
+        <h2>Description: @t.Description</h2>
+        <h2>Adress: @t.Adress</h2>
+        <h2>Start Date: @t.StartDate.ToShortDateString()</h2>
+        <h2>End Date: @t.EndDate.ToShortDateString()</h2>
+
+        @if (User.IsInRole("User"))
+        {
+            @if (t.Competitors.Find(x => x.FName == User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value) == null)
+            {
+                <button class="btn btn-default" asp-route-id="@t.Id" asp-page-handler="SignIn">Sign In</button>
+            }
+
+        }
+
+    </form>
+</div>
+@section scripts{
+<partial name="_ValidationScriptsPartial" />
+}

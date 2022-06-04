@@ -1,5 +1,4 @@
 using DAL;
-using Entites;
 using LogicLayer;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -11,7 +10,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddScoped<ITournamentDB<Tournament>, TournamentDB>();
 builder.Services.AddScoped<IUserDB<User>, UserDB>();
 builder.Services.AddScoped<IUserManger, UserManager>();
-
+builder.Services.AddScoped<ITournamentManager, TournamentManager>();
 
 builder.Services.AddSession(options =>
 {

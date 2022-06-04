@@ -1,5 +1,4 @@
 using DAL;
-using Entites;
 using LogicLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

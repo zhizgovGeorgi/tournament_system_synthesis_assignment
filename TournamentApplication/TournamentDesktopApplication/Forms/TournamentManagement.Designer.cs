@@ -47,8 +47,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblMaxComp = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDeleteTournament = new System.Windows.Forms.Button();
+            this.btnCancelTournament = new System.Windows.Forms.Button();
             this.btnEditTournament = new System.Windows.Forms.Button();
+            this.lblLocation = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numMinComp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxComp)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +59,7 @@
             this.lbTournaments.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbTournaments.FormattingEnabled = true;
             this.lbTournaments.ItemHeight = 15;
-            this.lbTournaments.Location = new System.Drawing.Point(288, 66);
+            this.lbTournaments.Location = new System.Drawing.Point(330, 95);
             this.lbTournaments.Name = "lbTournaments";
             this.lbTournaments.Size = new System.Drawing.Size(453, 244);
             this.lbTournaments.TabIndex = 0;
@@ -66,66 +67,79 @@
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(34, 46);
+            this.tbName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbName.Location = new System.Drawing.Point(44, 42);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(200, 23);
             this.tbName.TabIndex = 1;
             // 
             // tbDescription
             // 
-            this.tbDescription.Location = new System.Drawing.Point(34, 107);
+            this.tbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbDescription.Location = new System.Drawing.Point(44, 95);
+            this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(200, 23);
+            this.tbDescription.Size = new System.Drawing.Size(200, 79);
             this.tbDescription.TabIndex = 2;
             // 
             // dtpStartDate
             // 
-            this.dtpStartDate.Location = new System.Drawing.Point(34, 163);
+            this.dtpStartDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpStartDate.Location = new System.Drawing.Point(41, 196);
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(200, 23);
             this.dtpStartDate.TabIndex = 3;
             // 
             // dtpEndDate
             // 
-            this.dtpEndDate.Location = new System.Drawing.Point(34, 227);
+            this.dtpEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpEndDate.Location = new System.Drawing.Point(41, 260);
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(200, 23);
             this.dtpEndDate.TabIndex = 4;
             // 
             // numMinComp
             // 
-            this.numMinComp.Location = new System.Drawing.Point(34, 275);
+            this.numMinComp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.numMinComp.Location = new System.Drawing.Point(41, 308);
             this.numMinComp.Name = "numMinComp";
             this.numMinComp.Size = new System.Drawing.Size(61, 23);
             this.numMinComp.TabIndex = 5;
             // 
             // numMaxComp
             // 
-            this.numMaxComp.Location = new System.Drawing.Point(173, 275);
+            this.numMaxComp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.numMaxComp.Location = new System.Drawing.Point(180, 308);
             this.numMaxComp.Name = "numMaxComp";
             this.numMaxComp.Size = new System.Drawing.Size(61, 23);
             this.numMaxComp.TabIndex = 6;
             // 
             // tbAdress
             // 
-            this.tbAdress.Location = new System.Drawing.Point(34, 336);
+            this.tbAdress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbAdress.Location = new System.Drawing.Point(41, 369);
             this.tbAdress.Name = "tbAdress";
             this.tbAdress.Size = new System.Drawing.Size(200, 23);
             this.tbAdress.TabIndex = 7;
             // 
             // cbTournamentSystem
             // 
+            this.cbTournamentSystem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbTournamentSystem.FormattingEnabled = true;
-            this.cbTournamentSystem.Location = new System.Drawing.Point(34, 390);
+            this.cbTournamentSystem.Items.AddRange(new object[] {
+            "RoundRobin",
+            "DoubleRoundRobin"});
+            this.cbTournamentSystem.Location = new System.Drawing.Point(41, 423);
             this.cbTournamentSystem.Name = "cbTournamentSystem";
             this.cbTournamentSystem.Size = new System.Drawing.Size(200, 23);
             this.cbTournamentSystem.TabIndex = 8;
             // 
             // lblTournamets
             // 
+            this.lblTournamets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTournamets.AutoSize = true;
             this.lblTournamets.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTournamets.Location = new System.Drawing.Point(451, 30);
+            this.lblTournamets.Location = new System.Drawing.Point(484, 60);
             this.lblTournamets.Name = "lblTournamets";
             this.lblTournamets.Size = new System.Drawing.Size(131, 20);
             this.lblTournamets.TabIndex = 9;
@@ -133,9 +147,10 @@
             // 
             // lblTournamentName
             // 
+            this.lblTournamentName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTournamentName.AutoSize = true;
             this.lblTournamentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTournamentName.Location = new System.Drawing.Point(34, 23);
+            this.lblTournamentName.Location = new System.Drawing.Point(44, 19);
             this.lblTournamentName.Name = "lblTournamentName";
             this.lblTournamentName.Size = new System.Drawing.Size(122, 16);
             this.lblTournamentName.TabIndex = 10;
@@ -143,9 +158,10 @@
             // 
             // lblDescription
             // 
+            this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDescription.Location = new System.Drawing.Point(34, 88);
+            this.lblDescription.Location = new System.Drawing.Point(44, 76);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(78, 16);
             this.lblDescription.TabIndex = 11;
@@ -153,9 +169,10 @@
             // 
             // lblStartDate
             // 
+            this.lblStartDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblStartDate.AutoSize = true;
             this.lblStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblStartDate.Location = new System.Drawing.Point(34, 144);
+            this.lblStartDate.Location = new System.Drawing.Point(41, 177);
             this.lblStartDate.Name = "lblStartDate";
             this.lblStartDate.Size = new System.Drawing.Size(69, 16);
             this.lblStartDate.TabIndex = 12;
@@ -163,9 +180,10 @@
             // 
             // lblEndDate
             // 
+            this.lblEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEndDate.AutoSize = true;
             this.lblEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblEndDate.Location = new System.Drawing.Point(34, 208);
+            this.lblEndDate.Location = new System.Drawing.Point(41, 241);
             this.lblEndDate.Name = "lblEndDate";
             this.lblEndDate.Size = new System.Drawing.Size(66, 16);
             this.lblEndDate.TabIndex = 13;
@@ -173,9 +191,10 @@
             // 
             // lblAdress
             // 
+            this.lblAdress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAdress.AutoSize = true;
             this.lblAdress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblAdress.Location = new System.Drawing.Point(34, 317);
+            this.lblAdress.Location = new System.Drawing.Point(41, 406);
             this.lblAdress.Name = "lblAdress";
             this.lblAdress.Size = new System.Drawing.Size(53, 16);
             this.lblAdress.TabIndex = 14;
@@ -183,9 +202,10 @@
             // 
             // lblTournamentSystem
             // 
+            this.lblTournamentSystem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTournamentSystem.AutoSize = true;
             this.lblTournamentSystem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTournamentSystem.Location = new System.Drawing.Point(34, 371);
+            this.lblTournamentSystem.Location = new System.Drawing.Point(41, 404);
             this.lblTournamentSystem.Name = "lblTournamentSystem";
             this.lblTournamentSystem.Size = new System.Drawing.Size(130, 16);
             this.lblTournamentSystem.TabIndex = 15;
@@ -193,9 +213,10 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(34, 256);
+            this.label1.Location = new System.Drawing.Point(41, 289);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 16);
             this.label1.TabIndex = 16;
@@ -203,9 +224,10 @@
             // 
             // lblMaxComp
             // 
+            this.lblMaxComp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMaxComp.AutoSize = true;
             this.lblMaxComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblMaxComp.Location = new System.Drawing.Point(146, 256);
+            this.lblMaxComp.Location = new System.Drawing.Point(153, 289);
             this.lblMaxComp.Name = "lblMaxComp";
             this.lblMaxComp.Size = new System.Drawing.Size(110, 16);
             this.lblMaxComp.TabIndex = 17;
@@ -213,41 +235,58 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(340, 362);
+            this.btnAdd.Location = new System.Drawing.Point(370, 409);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(94, 51);
             this.btnAdd.TabIndex = 18;
             this.btnAdd.Text = "Add Tournament";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnDeleteTournament
+            // btnCancelTournament
             // 
-            this.btnDeleteTournament.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteTournament.Location = new System.Drawing.Point(478, 364);
-            this.btnDeleteTournament.Name = "btnDeleteTournament";
-            this.btnDeleteTournament.Size = new System.Drawing.Size(94, 49);
-            this.btnDeleteTournament.TabIndex = 19;
-            this.btnDeleteTournament.Text = "Delete Tournament";
-            this.btnDeleteTournament.UseVisualStyleBackColor = true;
+            this.btnCancelTournament.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelTournament.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelTournament.Location = new System.Drawing.Point(508, 411);
+            this.btnCancelTournament.Name = "btnCancelTournament";
+            this.btnCancelTournament.Size = new System.Drawing.Size(94, 49);
+            this.btnCancelTournament.TabIndex = 19;
+            this.btnCancelTournament.Text = "Cancel Tournament";
+            this.btnCancelTournament.UseVisualStyleBackColor = true;
+            this.btnCancelTournament.Click += new System.EventHandler(this.btnCancelTournament_Click);
             // 
             // btnEditTournament
             // 
+            this.btnEditTournament.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditTournament.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditTournament.Location = new System.Drawing.Point(620, 364);
+            this.btnEditTournament.Location = new System.Drawing.Point(650, 411);
             this.btnEditTournament.Name = "btnEditTournament";
             this.btnEditTournament.Size = new System.Drawing.Size(94, 49);
             this.btnEditTournament.TabIndex = 20;
             this.btnEditTournament.Text = "Edit Tournament";
             this.btnEditTournament.UseVisualStyleBackColor = true;
             // 
+            // lblLocation
+            // 
+            this.lblLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblLocation.AutoSize = true;
+            this.lblLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblLocation.Location = new System.Drawing.Point(41, 350);
+            this.lblLocation.Name = "lblLocation";
+            this.lblLocation.Size = new System.Drawing.Size(53, 16);
+            this.lblLocation.TabIndex = 21;
+            this.lblLocation.Text = "Adress:";
+            // 
             // TournamentManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(828, 536);
+            this.Controls.Add(this.lblLocation);
             this.Controls.Add(this.btnEditTournament);
-            this.Controls.Add(this.btnDeleteTournament);
+            this.Controls.Add(this.btnCancelTournament);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lblMaxComp);
             this.Controls.Add(this.label1);
@@ -298,7 +337,8 @@
         private Label label1;
         private Label lblMaxComp;
         private Button btnAdd;
-        private Button btnDeleteTournament;
+        private Button btnCancelTournament;
         private Button btnEditTournament;
+        private Label lblLocation;
     }
 }

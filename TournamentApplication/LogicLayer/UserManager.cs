@@ -41,6 +41,11 @@ namespace LogicLayer
             return users.Find(x => x.Email == email && x.Password == password);
         }
 
+        public User GetUserByEmail(string email)
+        {
+            return users.Find(x => x.Email == email);
+        }
+
         public List<User> GetAllUsers()
         {
             return users;

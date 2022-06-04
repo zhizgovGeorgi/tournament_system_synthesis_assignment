@@ -13,6 +13,23 @@ namespace LogicLayer
         private Player player1;
         private Player player2;
 
+        public int Rounds { get { return this.rounds; } }
+        public int Matches { get { return this.matches; } }
+
+        public Player Player1
+        {
+            get { return this.player1; }
+            private set
+            {
+                if (player1== player2)
+                {
+                    throw new MyException("A player cannot play against himself!");
+                }
+                this.player1 = value;
+            }
+        }
+        public Player Player2 { get { return this.player2; } }
+
         public Match(int rounds, int matches, Player player1 , Player player2)
         {
             this.rounds = rounds;
@@ -23,7 +40,7 @@ namespace LogicLayer
 
         public override string ToString()
         {
-            return $"{player1} vs. {player2}";
+            return $"{Player1.User.FName} {Player1.User.LName} vs. {Player2.User.FName} {Player2.User.LName}";
         }
     }
 }

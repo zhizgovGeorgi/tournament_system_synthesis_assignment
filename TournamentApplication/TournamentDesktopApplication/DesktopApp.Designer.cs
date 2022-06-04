@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DesktopApp));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnResults = new System.Windows.Forms.Button();
             this.btnTournaments = new System.Windows.Forms.Button();
             this.btnUsers = new System.Windows.Forms.Button();
             this.paneLogo = new System.Windows.Forms.Panel();
@@ -39,7 +40,6 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnResults = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.paneLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
@@ -59,6 +59,25 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(220, 561);
             this.panelMenu.TabIndex = 0;
+            // 
+            // btnResults
+            // 
+            this.btnResults.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnResults.FlatAppearance.BorderSize = 0;
+            this.btnResults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResults.ForeColor = System.Drawing.Color.White;
+            this.btnResults.Image = ((System.Drawing.Image)(resources.GetObject("btnResults.Image")));
+            this.btnResults.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResults.Location = new System.Drawing.Point(0, 200);
+            this.btnResults.Name = "btnResults";
+            this.btnResults.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnResults.Size = new System.Drawing.Size(220, 60);
+            this.btnResults.TabIndex = 3;
+            this.btnResults.Text = " Results";
+            this.btnResults.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResults.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnResults.UseVisualStyleBackColor = true;
+            this.btnResults.Click += new System.EventHandler(this.btnResults_Click);
             // 
             // btnTournaments
             // 
@@ -113,7 +132,7 @@
             this.lblLogo.AutoSize = true;
             this.lblLogo.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblLogo.ForeColor = System.Drawing.Color.White;
-            this.lblLogo.Location = new System.Drawing.Point(56, 31);
+            this.lblLogo.Location = new System.Drawing.Point(63, 29);
             this.lblLogo.Name = "lblLogo";
             this.lblLogo.Size = new System.Drawing.Size(102, 21);
             this.lblLogo.TabIndex = 0;
@@ -177,25 +196,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(337, 316);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnResults
-            // 
-            this.btnResults.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnResults.FlatAppearance.BorderSize = 0;
-            this.btnResults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResults.ForeColor = System.Drawing.Color.White;
-            this.btnResults.Image = ((System.Drawing.Image)(resources.GetObject("btnResults.Image")));
-            this.btnResults.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnResults.Location = new System.Drawing.Point(0, 200);
-            this.btnResults.Name = "btnResults";
-            this.btnResults.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnResults.Size = new System.Drawing.Size(220, 60);
-            this.btnResults.TabIndex = 3;
-            this.btnResults.Text = " Results";
-            this.btnResults.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnResults.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnResults.UseVisualStyleBackColor = true;
-            this.btnResults.Click += new System.EventHandler(this.btnResults_Click);
             // 
             // DesktopApp
             // 

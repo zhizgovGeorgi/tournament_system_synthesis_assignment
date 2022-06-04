@@ -9,20 +9,20 @@ namespace LogicLayer
 {
     public class Register
     {
-        [Required(ErrorMessage = "Please enter a Name")]
+        [Required(ErrorMessage = "Please enter a first name")]
         public string FName { get; set; }
 
-        [Required(ErrorMessage = "Please enter a Name")]
+        [Required(ErrorMessage = "Please enter a last name")]
         public string LName { get; set; }
 
-        [Required(ErrorMessage = "Please enter a Name")]
+        [Required(ErrorMessage = "Please enter your email")][RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", ErrorMessage = "Must be a valid Email Address")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Please enter a Name")]
+        [Required(ErrorMessage = "Please enter an adress")]
         public string Adress { get; set; }
 
 
-        [Required(ErrorMessage = "Please enter a Name")]
+        [Required(ErrorMessage = "Please enter password")]
         public string Password { get; set; }
     }
 }

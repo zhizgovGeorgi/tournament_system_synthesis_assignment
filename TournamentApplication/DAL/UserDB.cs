@@ -1,4 +1,4 @@
-﻿using Entites;
+﻿using LogicLayer;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -20,11 +20,11 @@ namespace DAL
 
         public void Add(User u)
         {
-            string sqlStatement = "INSERT INTO tournament_user (fName, lName, email, adress,  password, role) VALUES (@fName, @lName,  @email , @adress, @password, role);";
+            string sqlStatement = "INSERT INTO tournament_user (fName, lName, email, adress,  password, role) VALUES (@fName, @lName,  @email , @adress, @password, @role);";
             MySqlCommand command = new MySqlCommand(sqlStatement, conn);
 
-            command.Parameters.AddWithValue("@firstName", u.FName);
-            command.Parameters.AddWithValue("@lastname", u.LName);
+            command.Parameters.AddWithValue("@fName", u.FName);
+            command.Parameters.AddWithValue("@lName", u.LName);
             command.Parameters.AddWithValue("@email", u.Email);
             command.Parameters.AddWithValue("@adress", u.Adress);
             command.Parameters.AddWithValue("@password", u.Password);
@@ -83,15 +83,51 @@ namespace DAL
             }
         }
 
+        public User ReadUser(int id)
+        {
+            string sqlStatement = "SELECT * FROM tournament_user WHERE id = @id ";
+            MySqlCommand command = new MySqlCommand(sqlStatement, conn);
+            command.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                MySqlDataReader databaseReader;
+
+                conn.Open();
+                databaseReader = command.ExecuteReader();
+
+                User user;
+
+                while (databaseReader.Read())
+                {
+
+                   return user = new User(databaseReader.GetInt32("id"), databaseReader.GetString("fName"), databaseReader.GetString("lName"), databaseReader.GetString("email"), databaseReader.GetString("adress"), databaseReader.GetString("password"), databaseReader.GetString("role"));
+                }
+                return null;
+            }
+            catch (MySqlException ex)
+            {
+
+                throw ex;
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+
+
         public void Update(User u)
         {
-            string sql = "UPDATE tournament_user SET firstName = @firstName, lastName = @lastName, email = @email, adress = @adress WHERE id = @id";
+            string sql = "UPDATE tournament_user SET fName = @fName, lName = @lName, email = @email, adress = @adress WHERE id = @id";
             MySqlCommand command = new MySqlCommand(sql, conn);
 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@id", u.Id);
-            command.Parameters.AddWithValue("@firstName", u.FName);
-            command.Parameters.AddWithValue("@lastname", u.LName);
+            command.Parameters.AddWithValue("@fName", u.FName);
+            command.Parameters.AddWithValue("@lName", u.LName);
             command.Parameters.AddWithValue("@email", u.Email);
             command.Parameters.AddWithValue("@adress", u.Adress);
             try
@@ -112,7 +148,7 @@ namespace DAL
             {
                 if (conn != null && conn.State == ConnectionState.Open)
                 {
-                   conn.Close();
+                    conn.Close();
                 }
             }
 
