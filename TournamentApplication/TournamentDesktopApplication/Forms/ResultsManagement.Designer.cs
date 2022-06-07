@@ -45,6 +45,7 @@
             // 
             // lbTournaments
             // 
+            this.lbTournaments.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbTournaments.FormattingEnabled = true;
             this.lbTournaments.ItemHeight = 15;
             this.lbTournaments.Location = new System.Drawing.Point(39, 80);
@@ -56,6 +57,7 @@
             // 
             // lbRounds
             // 
+            this.lbRounds.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbRounds.FormattingEnabled = true;
             this.lbRounds.ItemHeight = 15;
             this.lbRounds.Location = new System.Drawing.Point(221, 80);
@@ -66,15 +68,19 @@
             // 
             // lbMatches
             // 
+            this.lbMatches.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbMatches.FormattingEnabled = true;
             this.lbMatches.ItemHeight = 15;
             this.lbMatches.Location = new System.Drawing.Point(348, 80);
             this.lbMatches.Name = "lbMatches";
             this.lbMatches.Size = new System.Drawing.Size(284, 304);
             this.lbMatches.TabIndex = 2;
+            this.lbMatches.SelectedIndexChanged += new System.EventHandler(this.lbMatches_SelectedIndexChanged);
+            this.lbMatches.DoubleClick += new System.EventHandler(this.lbMatches_DoubleClick);
             // 
             // numPlayer1
             // 
+            this.numPlayer1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.numPlayer1.Location = new System.Drawing.Point(680, 90);
             this.numPlayer1.Name = "numPlayer1";
             this.numPlayer1.Size = new System.Drawing.Size(73, 23);
@@ -82,6 +88,7 @@
             // 
             // numPlayer2
             // 
+            this.numPlayer2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.numPlayer2.Location = new System.Drawing.Point(680, 217);
             this.numPlayer2.Name = "numPlayer2";
             this.numPlayer2.Size = new System.Drawing.Size(73, 23);
@@ -89,6 +96,7 @@
             // 
             // btnSaveResult
             // 
+            this.btnSaveResult.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSaveResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveResult.Location = new System.Drawing.Point(670, 291);
             this.btnSaveResult.Name = "btnSaveResult";
@@ -100,6 +108,7 @@
             // 
             // lblResultManagement
             // 
+            this.lblResultManagement.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblResultManagement.AutoSize = true;
             this.lblResultManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblResultManagement.Location = new System.Drawing.Point(258, 19);
@@ -110,6 +119,7 @@
             // 
             // lblTournaments
             // 
+            this.lblTournaments.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTournaments.AutoSize = true;
             this.lblTournaments.Location = new System.Drawing.Point(40, 56);
             this.lblTournaments.Name = "lblTournaments";
@@ -119,6 +129,7 @@
             // 
             // lblRounds
             // 
+            this.lblRounds.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRounds.AutoSize = true;
             this.lblRounds.Location = new System.Drawing.Point(221, 56);
             this.lblRounds.Name = "lblRounds";
@@ -128,6 +139,7 @@
             // 
             // lblMatch
             // 
+            this.lblMatch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMatch.AutoSize = true;
             this.lblMatch.Location = new System.Drawing.Point(348, 56);
             this.lblMatch.Name = "lblMatch";
@@ -137,6 +149,7 @@
             // 
             // btnGenerateSchedule
             // 
+            this.btnGenerateSchedule.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnGenerateSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenerateSchedule.Location = new System.Drawing.Point(670, 346);
             this.btnGenerateSchedule.Name = "btnGenerateSchedule";

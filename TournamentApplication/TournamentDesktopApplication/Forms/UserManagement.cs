@@ -7,19 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DAL;
+using LogicLayer;
 
 namespace TournamentDesktopApplication.Forms
 {
     public partial class UserManagement : Form
     {
-        public UserManagement()
+        IUserManger um;
+        public UserManagement(IUserManger um)
         {
             InitializeComponent();
+            this.um = um;
+            LoadUsers();
         }
 
         private void UserManagement_Load(object sender, EventArgs e)
         {
             LoadTheme();
+        }
+
+        private void LoadUsers()
+        {
+            lbUsers.Items.Clear();
+            foreach (User user in um.GetAllUsers())
+            {
+                lbUsers.Items.Add(user);
+            }
         }
 
         private void LoadTheme()
@@ -37,6 +51,16 @@ namespace TournamentDesktopApplication.Forms
             }
            // lblLBEmployees.ForeColor = ThemeColour.SecondaryColour;
            // lblPrimary.ForeColor = ThemeColour.PrimaryColour;
+        }
+
+        private void lbUsers_DoubleClick(object sender, EventArgs e)
+        {
+            User u = (User)lbUsers.SelectedItem;
+            lbTournaments.Items.Clear();
+            foreach (Tournament tournament in u.Tournaments)
+            {
+                lbTournaments.Items.Add(tournament);
+            }
         }
     }
 }

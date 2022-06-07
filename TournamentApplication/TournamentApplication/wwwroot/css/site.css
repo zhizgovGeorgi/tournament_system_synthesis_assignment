@@ -87,3 +87,33 @@ max-width: 200px;
     margin-left:990px;
     float: right;
 }
+.profile {
+    font-family: Arial;
+    font-size: 24px;
+}
+.profileInfo {
+    min-width: 100px;
+    width: auto;
+    min-height: 100px;
+    background-color: navajowhite;
+    margin-bottom: 20px;
+    padding: 30px;
+    font-size: 20px;
+    border-radius: 30px;
+    display: flex;
+}
+.singleTournamentForPerson {
+    min-width: 100px;
+    width: auto;
+    min-height: 100px;
+    background-color: navajowhite;
+    margin-bottom: 20px;
+    padding: 30px;
+    font-size: 15px;
+    border-radius: 30px;
+    display: flex;
+}
+   
+.paragraph{
+
+}

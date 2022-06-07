@@ -30,7 +30,7 @@ namespace LogicLayer
             get { return this.startDate; }
             private set
             {
-                if (startDate.CompareTo(DateTime.UtcNow.AddDays(14)) >= 0)
+                if (value.CompareTo(DateTime.UtcNow.AddDays(14)) < 0)
                 {
                     throw new MyException("Tournament should have at least two weeks in advance!");
                 }
@@ -42,7 +42,7 @@ namespace LogicLayer
             get { return this.endDate; }
             private set
             {
-                if (endDate.CompareTo(startDate) < 0)
+                if (value.CompareTo(startDate) < 0)
                 {
                     throw new MyException("End date cannot be after the start date!");
                 }
@@ -54,7 +54,7 @@ namespace LogicLayer
             get { return this.minCompetitors; }
             private set
             {
-                if (minCompetitors < 2)
+                if (value < 2)
                 {
                     throw new MyException("Minimum count should not be less than 2");
                 }
@@ -66,11 +66,11 @@ namespace LogicLayer
             get { return this.maxCompetitors; }
             private set
             {
-                if (maxCompetitors < 2)
+                if (value < 2)
                 {
                     throw new MyException("Maximum count should not be less than 2");
                 }
-                else if (maxCompetitors < minCompetitors)
+                else if (value < minCompetitors)
                 {
                     throw new MyException("Minimum count should not be more than the maximum count");
                 }
@@ -103,10 +103,10 @@ namespace LogicLayer
         {
             this.name = name;
             this.description = description;
-            this.startDate = startDate;
-            this.endDate = endDate;
-            this.minCompetitors = minCompetitors;
-            this.maxCompetitors = maxCompetitors;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+            this.MinCompetitors = minCompetitors;
+            this.MaxCompetitors = maxCompetitors;
             this.adress = adress;
             this.tournamentSystem = tournamentSystem;
             this.status = status;
@@ -120,7 +120,6 @@ namespace LogicLayer
         }
 
        
-
         public void AssignPlayers(List<User> users)
         {
             this.competitors = users;
@@ -129,6 +128,7 @@ namespace LogicLayer
         public void AssignMatches(List<Match> matches)
         {
             this.matches = matches;
+
         }
         public override string ToString()
         {

@@ -8,12 +8,12 @@ namespace LogicLayer
 {
     public class UserManager : IUserManger
     {
-        private List<User> users;
+        private List<User> users = new List<User>();
         IUserDB<User> userDB;
         public UserManager(IUserDB<User> db)
         {
             this.userDB = db;
-            users = userDB.Read();
+            userDB.GetAllTournamentsForParticipants(users);
         }
 
 
@@ -23,19 +23,11 @@ namespace LogicLayer
             {
                 userDB.Add(user);
                 users.Add(user);
+                return;
             }
+            throw new MyException("There is already user with the same data");
         }
 
-
-        public void RemoveUser(User u)
-        {
-            if (users.Find(x => x.Email == u.Email) != null)
-            {
-               // userDB..(u);
-                users.Remove(u);
-
-            }
-        }
         public User GetUser(string email, string password)
         {
             return users.Find(x => x.Email == email && x.Password == password);

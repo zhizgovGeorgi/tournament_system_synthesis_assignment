@@ -10,8 +10,9 @@ namespace LogicLayer
     {
         void Add(User obj);
 
-        List<User> Read();
 
         void Update( User obj);
+
+        void GetAllTournamentsForParticipants(List<User> users);
     }
 }

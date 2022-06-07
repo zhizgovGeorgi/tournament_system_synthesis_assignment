@@ -1,6 +1,7 @@
 ﻿@page
 @model TournamentWebApplication.Pages.TournamentsModel
 @{
+
 }
 @using LogicLayer;
 @inject ITournamentManager tm;
@@ -32,3 +33,6 @@
 
 </div>
 
+@section scripts{
+<partial name="_ValidationScriptsPartial" />
+}

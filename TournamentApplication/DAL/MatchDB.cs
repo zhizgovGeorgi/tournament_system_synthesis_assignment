@@ -22,14 +22,14 @@ namespace DAL
             string sqlStatement = "";
             for (int i = 0; i < matches.Count; i++)
             {
-                sqlStatement += $"INSERT INTO tournament_match ( tournamentId, roundNr, matchNr, player1,  score1, player2, score2) VALUES ( @tournamentId, @roundNr{i}, @matchNr{i}, @player1{i},  @score1{i}, @player2{i}, @score2{i});";
+                sqlStatement += $"INSERT INTO tournament_match ( tournamentId, roundNr, matchNr, player1,  score1, player2, score2, isComplete) VALUES ( @tournamentId, @roundNr{i}, @matchNr{i}, @player1{i},  @score1{i}, @player2{i}, @score2{i}, isComplete{i});";
 
             }
             sqlStatement += "UPDATE tournament SET status=@status WHERE id = @id;";
             MySqlCommand command = new MySqlCommand(sqlStatement, conn);
             command.Parameters.AddWithValue("@tournamentId", t.Id);
             command.Parameters.AddWithValue("@id", t.Id);
-            command.Parameters.AddWithValue("@status", Status.SCHEDULED);
+            command.Parameters.AddWithValue("@status", Status.SCHEDULED.ToString());
 
             for (int i = 0; i < matches.Count; i++)
             {
@@ -39,6 +39,7 @@ namespace DAL
                 command.Parameters.AddWithValue($"@score1{i}", matches[i].Player1.Score);
                 command.Parameters.AddWithValue($"@player2{i}", matches[i].Player2.User.Id);
                 command.Parameters.AddWithValue($"@score2{i}", matches[i].Player2.Score);
+                command.Parameters.AddWithValue($"@isComplete{i}", matches[i].IsComplete);
 
             }
             try
@@ -83,7 +84,7 @@ namespace DAL
                 {
                     Player player1 = new Player(userDB.ReadUser(databaseReader.GetInt32("player1")), databaseReader.GetInt32("score1"));
                     Player player2 = new Player(userDB.ReadUser(databaseReader.GetInt32("player2")), databaseReader.GetInt32("score2"));
-                    match = new Match(databaseReader.GetInt32("roundNr"), databaseReader.GetInt32("matchNr"), player1, player2);
+                    match = new Match(databaseReader.GetInt32("roundNr"), databaseReader.GetInt32("matchNr"), player1, player2, databaseReader.GetBoolean("isCompleted"));
                     matches.Add(match);
                 }
                 t.AssignMatches(matches);
@@ -102,13 +103,15 @@ namespace DAL
 
         public void SetScore(Match m, Tournament t)
         {
-            string sql = "UPDATE tournament_match SET score1 = @score1, score2 = @score2 WHERE tournamentId = @tournamentId";
-            MySqlCommand command = new MySqlCommand(sql, conn);
+            string sql = "UPDATE tournament_match SET score1 = @score1, score2 = @score2, isCompleted=@isCompleted WHERE tournamentId = @tournamentId and roundNr=@roundNr and matchNr=@matchNr";
 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@tournamentId", t.Id);
-            command.Parameters.AddWithValue("@score1", m.Player1.Score);
-            command.Parameters.AddWithValue("@score2", m.Player2.Score);
+            cmd.Parameters.AddWithValue("@roundNr", m.Rounds);
+            cmd.Parameters.AddWithValue("@matchNr", m.Matches);
+            cmd.Parameters.AddWithValue("@score1", m.Player1.Score);
+            cmd.Parameters.AddWithValue("@score2", m.Player2.Score);
+            cmd.Parameters.AddWithValue("@isCompleted", true);
             try
             {
 

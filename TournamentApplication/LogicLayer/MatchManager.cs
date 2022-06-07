@@ -25,7 +25,6 @@ namespace LogicLayer
         }
         public void SetScore(Match m, Tournament t)
         {
-           
             db.SetScore(m, t);
         }
 

@@ -10,31 +10,28 @@ namespace LogicLayer
     {
         List<Tournament> tournaments = new List<Tournament>();
         ITournamentDB<Tournament> db;
-        public TournamentManager(ITournamentDB<Tournament> db)
+        IMatchDB<Match> mdb;
+        public TournamentManager(ITournamentDB<Tournament> db, IMatchDB<Match> mdb)
         {
             this.db = db;
+            this.mdb = mdb;
             // tournaments =db.GetAllTournaments();
             db.GetAllTournamentsAndParticipants(tournaments);
             CheckIfOverDate();
+            CheckIfComplete();
         }
 
         public void AddTournament(Tournament tournament)
         {
-            try
+            if (tournaments.Find(x => x.Adress == tournament.Adress && x.StartDate == tournament.StartDate) is null)
             {
-                db.AddTournament(tournament);
-                tournaments.Add(tournament);
+                Tournament tournamentWithId = new Tournament(db.GetNextID(), tournament.Name, tournament.Description, tournament.StartDate, tournament.EndDate, tournament.MinCompetitors, tournament.MaxCompetitors, tournament.Adress, tournament.TournamentSystem, tournament.Status);
+                db.AddTournament(tournamentWithId);
+                tournaments.Add(tournamentWithId);
+                return;
             }
-            catch (MyException ex)
-            {
+            throw new MyException("There is already a tournament with the same start date and location!");
 
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
 
         }
 
@@ -44,7 +41,7 @@ namespace LogicLayer
             {
                 if (t.Status == Status.UPCOMING)
                 {
-                    if (DateTime.Today.AddDays(7).CompareTo(t.StartDate) >= 0 )
+                    if (DateTime.Today.AddDays(7).CompareTo(t.StartDate) >= 0)
                     {
                         if (t.Competitors.Count >= t.MinCompetitors)
                         {
@@ -56,38 +53,49 @@ namespace LogicLayer
                 }
             }
         }
+        public void CheckIfComplete()
+        {
+            foreach (Tournament t in tournaments)
+            {
+                mdb.GetMatches(t);
+                if (t.Status == Status.SCHEDULED)
+                {
+                    if (t.Matches.Any(x => x.IsComplete == false))
+                    {
+                        return;
+                    }
+                    db.UpdateTournamentStatus(t, Status.COMPLETED);
+                }
+
+            }
+        }
 
 
 
         public void UpdateTournamentStatus(Tournament t, Status status)
         {
-            db.UpdateTournamentStatus(t, status);
-        }
-
-
-        public void RemoveTournament(Tournament t)
-        {
             if (tournaments.Find(x => x.Id == t.Id) != null)
             {
-                db.DeleteTournament(t);
-                tournaments.Remove(t);
+                db.UpdateTournamentStatus(t, status);
+                return;
             }
+            throw new MyException("This tournament doesn't exist!");
+
         }
-        public Tournament GetTournament(Tournament t)
-        {
-            return tournaments.Find(x => x.Name == t.Name);
-        }
+
+
 
         public bool SignForTournament(Tournament t, User u)
         {
             if (t.Competitors.Find(x => x.Id == u.Id) is null)
             {
-                if (t.StartDate > DateTime.Now.AddDays(7))
+                if (DateTime.Now.CompareTo(DateTime.UtcNow.AddDays(7)) < 0)
                 {
                     if (t.MaxCompetitors > t.Competitors.Count())
                     {
                         db.SignForTournament(t, u);
-                        t.Competitors.Add(u);
+                        t.AssignCompetitor(u);
+                        u.AssignTournament(t);
                         return true;
                     }
                 }
@@ -100,13 +108,19 @@ namespace LogicLayer
             return tournaments.Find(x => x.Id == id);
         }
 
-        public Tournament GetTournament(string name)
-        {
-            return tournaments.Find(x => x.Name == name);
-        }
         public List<Tournament> GetAllTournaments()
         {
             return tournaments;
+        }
+
+        public void EditTournament(Tournament t)
+        {
+            if (tournaments.Find(x => x.Id == t.Id) != null)
+            {
+                db.EditTournament(t);
+                return;
+            }
+            throw new MyException("This tournament doesn't exist!");
         }
 
     }

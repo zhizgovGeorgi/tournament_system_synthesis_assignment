@@ -31,10 +31,10 @@ namespace TournamentWebApplication.Pages
             {
                 if (tm.SignForTournament(tm.GetTournament(id), um.GetUserByEmail(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value)) is true)
                 {
-                    return RedirectToPage("Index");
+                    return RedirectToPage("Profile");
                 }
             }
-            return Page();
+            return RedirectToPage("Index");
         }
     }
 }

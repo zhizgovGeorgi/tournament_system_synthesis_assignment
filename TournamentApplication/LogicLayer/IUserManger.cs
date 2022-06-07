@@ -10,7 +10,6 @@ namespace LogicLayer
     {
         void AddUser(User user);
 
-        void RemoveUser(User u);
         User GetUser(string email, string password);
         User GetUserByEmail(string email);
         List<User> GetAllUsers();

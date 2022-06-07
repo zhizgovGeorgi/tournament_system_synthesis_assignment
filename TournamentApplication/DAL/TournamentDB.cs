@@ -14,69 +14,6 @@ namespace DAL
             divider = new SystemDivider();
         }
 
-        public void DeleteTournament(Tournament t)
-        {
-            string sqlStatement = "DELETE FROM tournament WHERE id = @id;";
-            MySqlCommand command = new MySqlCommand(sqlStatement, conn);
-
-            command.Parameters.AddWithValue("@id", t.Id);
-
-            try
-            {
-                int n;
-
-                conn.Open();
-
-                n = command.ExecuteNonQuery();
-
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-
-
-
-        }
-        public List<Tournament> GetAllTournaments()
-        {
-            string sqlStatement = "SELECT * FROM tournament";
-            MySqlCommand command = new MySqlCommand(sqlStatement, conn);
-            List<Tournament> tournaments = new List<Tournament>();
-
-            try
-            {
-                MySqlDataReader databaseReader;
-
-                conn.Open();
-                databaseReader = command.ExecuteReader();
-                Tournament tournament;
-
-
-                while (databaseReader.Read())
-                {
-                    Status status = (Status)Enum.Parse(typeof(Status), databaseReader.GetString("status"), true);
-                    tournament = new Tournament(databaseReader.GetInt32("id"), databaseReader.GetString("name"), databaseReader.GetString("description"), databaseReader.GetDateTime("startDate"), databaseReader.GetDateTime("endDate"), databaseReader.GetInt32("minCompetitors"), databaseReader.GetInt32("maxCompetitors"), databaseReader.GetString("adress"), divider.DivideTournamentSystems(databaseReader.GetString("tournamentSystem")), status);
-                    tournaments.Add(tournament);
-                }
-                return tournaments;
-            }
-            catch (MySqlException ex)
-            {
-
-                throw ex;
-
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
 
         public void SignForTournament(Tournament t, User u)
         {
@@ -90,8 +27,8 @@ namespace DAL
                 int n;
 
                 conn.Open();
-
                 n = command.ExecuteNonQuery();
+               // t.AssignCompetitor(u);
 
             }
             catch (MySqlException ex)
@@ -150,49 +87,8 @@ namespace DAL
                 conn.Close();
             }
 
-
-
         }
 
-        
-
-        //public List<User> GetCompetitorsPerTournament(int id)
-        //{
-        //    string sqlStatement = "SELECT userId FROM user_at_tournament where tournamentId=@tournamentId";
-        //    MySqlCommand command = new MySqlCommand(sqlStatement, conn);
-        //    List<User> competitors = new List<User>();
-
-        //    try
-        //    {
-        //        command.Parameters.AddWithValue("@tournamentId", id);
-        //        MySqlDataReader databaseReader;
-
-        //        conn.Open();
-        //        databaseReader = command.ExecuteReader();
-
-        //        User u;
-
-
-        //        while (databaseReader.Read())
-        //        {
-
-
-        //            u = new User(databaseReader.GetInt32("id"), databaseReader.GetInt32("employee_id"), databaseReader.GetDateTime("start_date"), databaseReader.GetDateTime("end_date"), databaseReader.GetDouble("fte"), databaseReader.GetString("reason"), databaseReader.GetBoolean("is_valid"));
-        //            competitors.Add(u);
-        //        }
-        //        return competitors;
-        //    }
-        //    catch (MySqlException ex)
-        //    {
-
-        //        throw ex;
-
-        //    }
-        //    finally
-        //    {
-        //        conn.Close();
-        //    }
-        //}
 
         public void AddTournament(Tournament t)
         {
@@ -234,15 +130,36 @@ namespace DAL
         }
 
 
+        public int GetNextID()
+        {
+            string sql = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbi463263' AND TABLE_NAME = 'tournament';";
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                conn.Open();
+                return Convert.ToInt32(cmd.ExecuteScalar());
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
 
 
 
-        public void EditUser(Tournament t)
+
+        public void EditTournament(Tournament t)
         {
             string sql = "UPDATE tournament SET name = @name, description=@description, startDate = @startDate, endDate = @endDate, minCompetitors = @minCompetitors, maxCompetitors = @maxCompetitors, adress=@adress, tournamentSystem=@tournamentSystem WHERE id = @id";
             MySqlCommand command = new MySqlCommand(sql, conn);
 
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            command.Parameters.AddWithValue("@id", t.Id);
             command.Parameters.AddWithValue("@name", t.Name);
             command.Parameters.AddWithValue("@description", t.Description);
             command.Parameters.AddWithValue("@startDate", t.StartDate);
@@ -256,7 +173,7 @@ namespace DAL
 
                 conn.Open();
 
-                cmd.ExecuteNonQuery();
+                command.ExecuteNonQuery();
 
 
             }

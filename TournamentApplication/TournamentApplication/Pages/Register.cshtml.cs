@@ -16,6 +16,8 @@ namespace TournamentWebApplication.Pages
         {
             this.um = um;
         }
+
+        
         public void OnGet()
         {
         }

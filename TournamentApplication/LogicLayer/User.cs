@@ -16,12 +16,14 @@ namespace LogicLayer
         private string adress;
         private string password;
         private string role;
+        private List<Tournament> tournaments;
 
         public int Id { get { return this.id; } }
+        
         public string FName { get { return this.fName; } }
         public string LName { get { return this.lName; } }
 
-        [Required(ErrorMessage ="Please enter your email")] [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", ErrorMessage = "Must be a valid Email Address")]
+        [Required(ErrorMessage ="Please enter your email")] [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", ErrorMessage = "Must be a valid Email")]
         public string Email { get { return this.email; } }
         public string Adress { get { return this.adress; } }
 
@@ -30,7 +32,7 @@ namespace LogicLayer
             get { return this.password; }
             private set
             {
-                if (password.Length < 6  )
+                if (value.Length < 6  )
                 {
                     throw new MyException("Password must contain at least 6 or more symbols");
                 }
@@ -38,6 +40,7 @@ namespace LogicLayer
             }
         }
         public string Role { get { return this.role; } }
+        public List<Tournament> Tournaments{ get { return this.tournaments; } }
 
         public User(int id, string fName, string lName, string email, string adress, string password, string role)
         {
@@ -57,15 +60,18 @@ namespace LogicLayer
             this.lName = lName;
             this.email = email;
             this.adress = adress;
-            this.password = password;
+            this.Password = password;
             this.role = role;
         }
-
-       
-
-        public User()
+      
+        public void AssignTournament(Tournament tournament)
         {
+            tournaments.Add(tournament);
+        }
 
+        public void AssingTournaments(List<Tournament> tournaments)
+        {
+            this.tournaments = tournaments;
         }
 
         public override string ToString()

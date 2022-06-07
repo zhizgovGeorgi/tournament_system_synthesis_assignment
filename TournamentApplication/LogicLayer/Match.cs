@@ -12,35 +12,56 @@ namespace LogicLayer
         private int matches;
         private Player player1;
         private Player player2;
+        private bool isComplete;
 
         public int Rounds { get { return this.rounds; } }
         public int Matches { get { return this.matches; } }
+        public bool IsComplete { get { return this.isComplete; } }
 
         public Player Player1
         {
             get { return this.player1; }
+        }
+        public Player Player2
+        {
+            get { return this.player2; }
             private set
             {
-                if (player1== player2)
+                if (value == player1)
                 {
                     throw new MyException("A player cannot play against himself!");
                 }
-                this.player1 = value;
+                this.player2 = value;
             }
         }
-        public Player Player2 { get { return this.player2; } }
 
-        public Match(int rounds, int matches, Player player1 , Player player2)
+        public Match(int rounds, int matches, Player player1, Player player2, bool isComplete)
         {
             this.rounds = rounds;
-            this.matches = matches; 
+            this.matches = matches;
             this.player1 = player1;
-            this.player2 = player2;
+            this.Player2 = player2;
+            this.isComplete = isComplete;
+        }
+
+
+        public void SetScore(int score1, int score2)
+        {
+            if ((score1 < 21 && score2 < 21) || (score1 > 30 || score2 > 30) || (score1 == score2))
+            {
+                throw new MyException("Wrong setting of the score! Please check again before updating the match!");
+            }
+            if (score1 > 20 && score2 > 20 && score1 < 29 && score2 < 29 && Math.Max(score1, score2) - Math.Min(score1, score2) != 2)
+            {
+                throw new MyException("Score should after 20 points shold have 2 points difference");
+            }
+            player1.Score = score1;
+            player2.Score = score2;
         }
 
         public override string ToString()
         {
-            return $"{Player1.User.FName} {Player1.User.LName} vs. {Player2.User.FName} {Player2.User.LName}";
+            return $"{Player1.User.FName} {Player1.User.LName} vs. {Player2.User.FName} {Player2.User.LName} SCORE: {Player1.Score} - {Player2.Score}";
         }
     }
 }

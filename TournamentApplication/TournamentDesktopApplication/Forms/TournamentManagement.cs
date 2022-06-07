@@ -47,7 +47,25 @@ namespace TournamentDesktopApplication.Forms
 
         private void lbTournaments_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (lbTournaments.SelectedIndex < 0)
+            {
+                return;
+            }
+            Object tournamentObject = lbTournaments.SelectedItem;
+            if (!(tournamentObject is Tournament))
+            {
+                return;
+            }
+            Tournament tournament = (Tournament)tournamentObject;
+            tbID.Text = tournament.Id.ToString();
+            tbName.Text = tournament.Name;
+            tbDescription.Text = tournament.Description;
+            dtpStartDate.Value = tournament.StartDate;
+            dtpEndDate.Value = tournament.EndDate;
+            numMinComp.Value = tournament.MinCompetitors;
+            numMaxComp.Value = tournament.MaxCompetitors;
+            tbAdress.Text = tournament.Adress;
+            cbTournamentSystem.Text = tournament.TournamentSystem.ToString();
         }
 
         private void LoadTournament()
@@ -102,10 +120,10 @@ namespace TournamentDesktopApplication.Forms
             //    return;
             //}
 
-            SystemDivider sd = new SystemDivider();
-            Tournament t = new Tournament(tbName.Text, tbDescription.Text, dtpStartDate.Value, dtpEndDate.Value, (int)numMinComp.Value, (int)numMaxComp.Value, tbAdress.Text, sd.DivideTournamentSystems(cbTournamentSystem.Text), Status.UPCOMING);
             try
             {
+                SystemDivider sd = new SystemDivider();
+                Tournament t = new Tournament(tbName.Text, tbDescription.Text, dtpStartDate.Value, dtpEndDate.Value, (int)numMinComp.Value, (int)numMaxComp.Value, tbAdress.Text, sd.DivideTournamentSystems(cbTournamentSystem.Text), Status.UPCOMING);
                 tm.AddTournament(t);
                 LoadTournament();
                 MessageBox.Show("Successful creation of tournament");
@@ -118,7 +136,8 @@ namespace TournamentDesktopApplication.Forms
             catch (Exception ex)
             {
 
-                throw ex;
+                MessageBox.Show(ex.Message);
+                return;
             }
 
         }
@@ -150,6 +169,24 @@ namespace TournamentDesktopApplication.Forms
             {
 
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnEditTournament_Click(object sender, EventArgs e)
+        {
+            Tournament currTournament = (Tournament)lbTournaments.SelectedItem;
+            if (currTournament.Status == Status.UPCOMING)
+            {
+                SystemDivider sd = new SystemDivider();
+                Tournament t = new Tournament(Convert.ToInt32(tbID.Text), tbName.Text, tbDescription.Text, dtpStartDate.Value, dtpEndDate.Value, (int)numMinComp.Value, (int)numMaxComp.Value, tbAdress.Text, sd.DivideTournamentSystems(cbTournamentSystem.Text), currTournament.Status);
+                tm.EditTournament(t);
+                MessageBox.Show($"Successful update of tournament {t.Name} with ID: {t.Id}");
+                LoadTournament();
+            }
+            else
+            {
+                MessageBox.Show("Too late to update the tournament! You can only update it when it is upcoming(Open for refistration)!");
+                return;
             }
         }
     }

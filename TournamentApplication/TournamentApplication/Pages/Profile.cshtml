@@ -3,26 +3,93 @@
 @model TournamentWebApplication.Pages.ProfileModel
 @{
     ViewData["Title"] = "Profile";
+    User u = Model.user;
 }
+@using LogicLayer;
+@inject IUserManger userManager;
+@inject IMatchManager mManager;
 <body>
 
     <header>
         <form method="post">
 
             <div class="profile">
+                <div class="profileInfo">
 
-                <p class="paragraph">First Name:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value</p>
-                <p class="paragraph">Last Name:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname).Value</p>
-                <p class="paragraph">Email:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value</p>
-                <p class="paragraph">Adress:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.StreetAddress).Value</p>
-                @if (User.IsInRole("Administrator"))
-                {
-                    <p class="paragraph">Role:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value</p>
+                    <p>First Name:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value</p>
+                    <p>Last Name:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname).Value</p>
+                    <p>Email:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value</p>
+                    <p>Adress:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.StreetAddress).Value</p>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <p>Role:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value</p>
 
-                }
+                    }
+                </div>
 
-                <input type="submit" value="Log out" />
+                <div class="singleTournamentForPerson">
+                    <p>Tournaments you have participated:</p>
+                    @foreach (Tournament t in u.Tournaments.FindAll(x => x.Status == Status.COMPLETED))
+                    {
+                        mManager.GetMatchesForTournaament(t);
+                        <p class="paragraph">@t</p>
+                        foreach (Match m in t.Matches)
+                        {
+                            if (m.Player1.User.Email == u.Email || m.Player2.User.Email == u.Email)
+                            {
+                                <p class="paragraph">@m</p>
+                            }
+                        }
+                    }
+                </div>
+
+                <div class="singleTournamentForPerson">
+                    <p>Tournaments you are signed in to participate:</p>
+                    @foreach (Tournament t in u.Tournaments.FindAll(x => x.Status == Status.UPCOMING || x.Status == Status.OVERDATE || x.Status == Status.SCHEDULED))
+                    {
+                        <p class="paragraph">@t</p>
+                    }
+                </div>
+
+                <div class="singleTournamentForPerson">
+                    @foreach (Tournament t in u.Tournaments.FindAll(x => x.Status == Status.CANCELED))
+                    {
+                        <p>Canceled tournaments you were signed in to participate:</p>
+                        <p class="paragraph">@t</p>
+                    }
+                </div>
+
+
+                @* <p>Tournaments you have participated:</p>
+                    @foreach (Tournament t in u.Tournaments)
+                    {
+                    if (t.Status == Status.COMPLETED)
+                    {
+                    mManager.GetMatchesForTournaament(t);
+                    <p class="paragraph">@t</p>
+                    foreach (Match m in t.Matches)
+                    {
+                    if (m.Player1.User.Email == u.Email || m.Player2.User.Email == u.Email)
+                    {
+                    <p class="paragraph">@m</p>
+                    }
+                    }
+                    }
+                    else if (t.Status == Status.UPCOMING || t.Status == Status.OVERDATE || t.Status == Status.SCHEDULED)
+                    {
+                    <p>Tournaments you are signed in to participate:</p>
+                    <p class="paragraph">@t</p>
+                    }
+                    else if (t.Status == Status.CANCELED)
+                    {
+                    <p>Canceled tournaments you were signed in to participate:</p>
+                    <p class="paragraph">@t</p>
+                    }
+
+                    }*@
+
             </div>
+            <input type="submit" value="Log out" />
         </form>
 
     </header>
@@ -33,5 +100,5 @@
 </body>
 
 @section scripts{
-    <partial name="_ValidationScriptsPartial" />
+<partial name="_ValidationScriptsPartial" />
 }

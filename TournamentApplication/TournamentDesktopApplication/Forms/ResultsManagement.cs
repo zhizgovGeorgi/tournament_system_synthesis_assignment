@@ -51,16 +51,28 @@ namespace TournamentDesktopApplication.Forms
             lbMatches.Items.Clear();
 
 
-            if (t.Status == Status.SCHEDULED)
+            if (t.Status == Status.SCHEDULED || t.Status == Status.COMPLETED)
             {
                 mm.GetMatchesForTournaament(t);
+                LoadRounds(t);
 
             }
             else if (t.Status == Status.OVERDATE)
             {
                 List<Match> matches = t.TournamentSystem.CreateMatchSchedule(t.Competitors, t);
                 mm.AddMatch(matches, t);
+                LoadRounds(t);
                 MessageBox.Show($"Schedule has just been generated for {t.Name} tournament!");
+            }
+            else if (t.Status == Status.CANCELED)
+            {
+                MessageBox.Show($"Unfortunately, this tournament has been cancelled!");
+                return;
+            }
+            else
+            {
+                MessageBox.Show($"It is too late to load the matches!");
+                return;
             }
         }
 
@@ -85,7 +97,9 @@ namespace TournamentDesktopApplication.Forms
 
         private void lbTournaments_DoubleClick(object sender, EventArgs e)
         {
-            LoadRounds((Tournament)lbTournaments.SelectedItem);
+            Tournament t = (Tournament)lbTournaments.SelectedItem;
+            LoadMatches(t);
+            
         }
 
         private void lbTournaments_SelectedIndexChanged(object sender, EventArgs e)
@@ -121,14 +135,47 @@ namespace TournamentDesktopApplication.Forms
         private void btnGenerateSchedule_Click(object sender, EventArgs e)
         {
 
-            Tournament t = (Tournament)lbTournaments.SelectedItem;
-            LoadMatches(t);
-            
+
+
         }
 
         private void btnSaveResult_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Match m = (Match)lbMatches.SelectedItem;
+                Tournament t = (Tournament)lbTournaments.SelectedItem;
+                if (m.IsComplete == true)
+                {
+                    MessageBox.Show("Once a score is set it cannot be reset !");
+                    return;
+                }
+                m.SetScore((int)numPlayer1.Value, (int)numPlayer2.Value);
+                mm.SetScore(m, t);
+                MessageBox.Show("Successful update of score of the match");
+            }
+            catch (MyException ex)
+            {
 
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        private void lbMatches_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbMatches_DoubleClick(object sender, EventArgs e)
+        {
+            Match m = (Match)lbMatches.SelectedItem;
+            numPlayer1.Value = m.Player1.Score;
+            numPlayer2.Value = m.Player2.Score;
         }
     }
 }

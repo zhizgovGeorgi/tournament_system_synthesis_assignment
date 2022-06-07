@@ -32,8 +32,10 @@ namespace TournamentDesktopApplication
                 .ConfigureServices((context, services) =>
                 {
                     services.AddTransient<ITournamentDB<Tournament>, TournamentDB>();
-                    services.AddTransient<IMatchDB<Match>, MatchDB>();
                     services.AddTransient<ITournamentManager, TournamentManager>();
+                    services.AddTransient<IUserDB<User>, UserDB>();
+                    services.AddTransient<IUserManger, UserManager>();
+                    services.AddTransient<IMatchDB<Match>, MatchDB>();
                     services.AddTransient<IMatchManager, MatchManager>();
                     services.AddTransient<TournamentDesktopApplication.Forms.TournamentManagement>();
                     services.AddTransient<TournamentDesktopApplication.DesktopApp>();

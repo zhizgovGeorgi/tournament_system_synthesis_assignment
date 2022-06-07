@@ -58,3 +58,17 @@ C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synth
 C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\bin\Debug\net6.0-windows\DAL.pdb
 C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\bin\Debug\net6.0-windows\LogicLayer.pdb
 C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\obj\Debug\net6.0-windows\TournamentDesktopApplication.csproj.CopyComplete
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\bin\Debug\net6.0-windows\App.Metrics.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\bin\Debug\net6.0-windows\App.Metrics.Abstractions.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\bin\Debug\net6.0-windows\App.Metrics.Concurrency.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\bin\Debug\net6.0-windows\App.Metrics.Core.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\bin\Debug\net6.0-windows\App.Metrics.Formatters.Ascii.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\bin\Debug\net6.0-windows\App.Metrics.Formatters.Json.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\bin\Debug\net6.0-windows\Couchbase.NetClient.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\bin\Debug\net6.0-windows\DnsClient.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\bin\Debug\net6.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\bin\Debug\net6.0-windows\Microsoft.Extensions.ObjectPool.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\bin\Debug\net6.0-windows\System.IO.Pipelines.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\bin\Debug\net6.0-windows\System.Linq.Async.dll
+C:\Users\Georgi\Desktop\SynthesisAssignment_ Badminton System\sport_system_synthesis_assignment\TournamentApplication\TournamentDesktopApplication\bin\Debug\net6.0-windows\System.Text.Json.dll

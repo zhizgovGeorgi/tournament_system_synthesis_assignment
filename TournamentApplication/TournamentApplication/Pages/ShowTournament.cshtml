@@ -16,7 +16,7 @@
 
         @if (User.IsInRole("User"))
         {
-            @if (t.Competitors.Find(x => x.FName == User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value) == null)
+            @if (t.Competitors.Find(x => x.Email == User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value) is null)
             {
                 <button class="btn btn-default" asp-route-id="@t.Id" asp-page-handler="SignIn">Sign In</button>
             }

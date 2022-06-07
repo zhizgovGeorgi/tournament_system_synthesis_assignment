@@ -79,7 +79,7 @@ namespace LogicLayer
                     User user2 = bottomBracket[j];
                     Player player1 = new Player(user1, 0);
                     Player player2 = new Player(user2, 0);
-                    Match match = new Match(i + 1, j + 1, player1, player2);
+                    Match match = new Match(i + 1, j + 1, player1, player2, false);
                     if (player1.User.Email != "B" && player2.User.Email != "B")
                     {
                         schedule.Add(match);

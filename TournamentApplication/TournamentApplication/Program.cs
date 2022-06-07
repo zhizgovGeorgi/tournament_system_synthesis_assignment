@@ -8,8 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<ITournamentDB<Tournament>, TournamentDB>();
+builder.Services.AddScoped<IMatchDB<Match>, MatchDB>();
 builder.Services.AddScoped<IUserDB<User>, UserDB>();
 builder.Services.AddScoped<IUserManger, UserManager>();
+builder.Services.AddScoped<IMatchManager, MatchManager>();
 builder.Services.AddScoped<ITournamentManager, TournamentManager>();
 
 builder.Services.AddSession(options =>

@@ -8,17 +8,18 @@ namespace LogicLayer
 {
     public interface ITournamentDB<Tournament>
     {
-        void DeleteTournament(Tournament t);
-        List<Tournament> GetAllTournaments();
+        int GetNextID();
 
         void AddTournament(Tournament t);
 
-        void EditUser(Tournament t);
+        void EditTournament(Tournament t);
 
         void UpdateTournamentStatus(Tournament t, Status status);
 
         void SignForTournament(Tournament t, User u);
 
         void GetAllTournamentsAndParticipants(List<Tournament> tournaments);
+
+        
     }
 }

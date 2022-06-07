@@ -15,6 +15,7 @@
         {
             <h1 class="welcome">Welcome,   @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname).Value</h1>
 
+
         }
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">

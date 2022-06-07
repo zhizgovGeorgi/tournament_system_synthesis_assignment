@@ -10,12 +10,14 @@ namespace TournamentDesktopApplication
         private Form activeFrom;
         private readonly ITournamentManager tm;
         private readonly IMatchManager mm;
-        public DesktopApp(ITournamentManager tm, IMatchManager mm)
+        private readonly IUserManger um;
+        public DesktopApp(ITournamentManager tm, IMatchManager mm, IUserManger um)
         {
             InitializeComponent();
             random = new Random();
             btnReset.Visible = false;
             this.tm = tm;
+            this.um = um;
             this.mm = mm;
         }
 
@@ -85,7 +87,7 @@ namespace TournamentDesktopApplication
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.UserManagement(), sender);
+            OpenChildForm(new Forms.UserManagement(um), sender);
         }
 
         private void btnTournaments_Click(object sender, EventArgs e)
@@ -106,7 +108,7 @@ namespace TournamentDesktopApplication
         {
             DisableButton();
             lblTitle.Text = "HOME";
-            panelTitleBar.BackColor = Color.FromArgb(0, 150, 136);
+            panelTitleBar.BackColor = Color.FromArgb(51, 51, 76);
             paneLogo.BackColor = Color.FromArgb(39, 39, 58);
             currButton = null;
             btnReset.Visible = false;
