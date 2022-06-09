@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "r7u9fZbgDp9nxGX4Rif/DKEYNQl2RD6oEnzpms7NZKI=",
+  "Hash": "7I7i+9bR0zMUlBVnmLT5HlIvyYq/oMm+Rd+NSHFuRwk=",
   "Source": "TournamentWebApplication",
   "BasePath": "_content/TournamentWebApplication",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Georgi\\Desktop\\SynthesisAssignment_ Badminton System\\sport_system_synthesis_assignment\\TournamentApplication\\TournamentApplication\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\TournamentWebApplication.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Georgi\\Desktop\\SynthesisAssignment_ Badminton System\\sport_system_synthesis_assignment\\TournamentApplication\\TournamentApplication\\wwwroot\\css\\Images\\logo.jpg",
+      "SourceId": "TournamentWebApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Georgi\\Desktop\\SynthesisAssignment_ Badminton System\\sport_system_synthesis_assignment\\TournamentApplication\\TournamentApplication\\wwwroot\\",
+      "BasePath": "_content/TournamentWebApplication",
+      "RelativePath": "css/Images/logo.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Images\\logo.jpg"
     },
     {
       "Identity": "C:\\Users\\Georgi\\Desktop\\SynthesisAssignment_ Badminton System\\sport_system_synthesis_assignment\\TournamentApplication\\TournamentApplication\\wwwroot\\css\\site.css",

@@ -52,6 +52,11 @@
             this.lblLocation = new System.Windows.Forms.Label();
             this.tbID = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
+            this.rbAll = new System.Windows.Forms.RadioButton();
+            this.rbUpcoming = new System.Windows.Forms.RadioButton();
+            this.rbOverDate = new System.Windows.Forms.RadioButton();
+            this.rbScheduled = new System.Windows.Forms.RadioButton();
+            this.rbCancelled = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.numMinComp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxComp)).BeginInit();
             this.SuspendLayout();
@@ -302,11 +307,81 @@
             this.lblId.TabIndex = 23;
             this.lblId.Text = "ID:";
             // 
+            // rbAll
+            // 
+            this.rbAll.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rbAll.AutoSize = true;
+            this.rbAll.Location = new System.Drawing.Point(340, 331);
+            this.rbAll.Name = "rbAll";
+            this.rbAll.Size = new System.Drawing.Size(39, 19);
+            this.rbAll.TabIndex = 24;
+            this.rbAll.TabStop = true;
+            this.rbAll.Text = "All";
+            this.rbAll.UseVisualStyleBackColor = true;
+            this.rbAll.CheckedChanged += new System.EventHandler(this.rbAll_CheckedChanged);
+            // 
+            // rbUpcoming
+            // 
+            this.rbUpcoming.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rbUpcoming.AutoSize = true;
+            this.rbUpcoming.Location = new System.Drawing.Point(409, 331);
+            this.rbUpcoming.Name = "rbUpcoming";
+            this.rbUpcoming.Size = new System.Drawing.Size(81, 19);
+            this.rbUpcoming.TabIndex = 25;
+            this.rbUpcoming.TabStop = true;
+            this.rbUpcoming.Text = "Upcoming";
+            this.rbUpcoming.UseVisualStyleBackColor = true;
+            this.rbUpcoming.CheckedChanged += new System.EventHandler(this.rbUpcoming_CheckedChanged);
+            // 
+            // rbOverDate
+            // 
+            this.rbOverDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rbOverDate.AutoSize = true;
+            this.rbOverDate.Location = new System.Drawing.Point(511, 331);
+            this.rbOverDate.Name = "rbOverDate";
+            this.rbOverDate.Size = new System.Drawing.Size(77, 19);
+            this.rbOverDate.TabIndex = 26;
+            this.rbOverDate.TabStop = true;
+            this.rbOverDate.Text = "Over Date";
+            this.rbOverDate.UseVisualStyleBackColor = true;
+            this.rbOverDate.CheckedChanged += new System.EventHandler(this.rbOverDate_CheckedChanged);
+            // 
+            // rbScheduled
+            // 
+            this.rbScheduled.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rbScheduled.AutoSize = true;
+            this.rbScheduled.Location = new System.Drawing.Point(611, 331);
+            this.rbScheduled.Name = "rbScheduled";
+            this.rbScheduled.Size = new System.Drawing.Size(80, 19);
+            this.rbScheduled.TabIndex = 27;
+            this.rbScheduled.TabStop = true;
+            this.rbScheduled.Text = "Scheduled";
+            this.rbScheduled.UseVisualStyleBackColor = true;
+            this.rbScheduled.CheckedChanged += new System.EventHandler(this.rbScheduled_CheckedChanged);
+            // 
+            // rbCancelled
+            // 
+            this.rbCancelled.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rbCancelled.AutoSize = true;
+            this.rbCancelled.Location = new System.Drawing.Point(697, 331);
+            this.rbCancelled.Name = "rbCancelled";
+            this.rbCancelled.Size = new System.Drawing.Size(74, 19);
+            this.rbCancelled.TabIndex = 28;
+            this.rbCancelled.TabStop = true;
+            this.rbCancelled.Text = "Canceled";
+            this.rbCancelled.UseVisualStyleBackColor = true;
+            this.rbCancelled.CheckedChanged += new System.EventHandler(this.rbCancelled_CheckedChanged);
+            // 
             // TournamentManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 536);
+            this.Controls.Add(this.rbCancelled);
+            this.Controls.Add(this.rbScheduled);
+            this.Controls.Add(this.rbOverDate);
+            this.Controls.Add(this.rbUpcoming);
+            this.Controls.Add(this.rbAll);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.tbID);
             this.Controls.Add(this.lblLocation);
@@ -367,5 +442,10 @@
         private Label lblLocation;
         private TextBox tbID;
         private Label lblId;
+        private RadioButton rbAll;
+        private RadioButton rbUpcoming;
+        private RadioButton rbOverDate;
+        private RadioButton rbScheduled;
+        private RadioButton rbCancelled;
     }
 }

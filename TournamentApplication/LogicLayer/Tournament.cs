@@ -132,7 +132,7 @@ namespace LogicLayer
         }
         public override string ToString()
         {
-            return $"ID: {Id} Name: {Name} start date: {StartDate.ToShortDateString()} to {EndDate.ToShortDateString()}";
+            return $"ID: {Id} Name: {Name}";
         }
 
     }

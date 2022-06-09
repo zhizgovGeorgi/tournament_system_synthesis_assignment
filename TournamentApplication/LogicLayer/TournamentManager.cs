@@ -10,20 +10,17 @@ namespace LogicLayer
     {
         List<Tournament> tournaments = new List<Tournament>();
         ITournamentDB<Tournament> db;
-        IMatchDB<Match> mdb;
-        public TournamentManager(ITournamentDB<Tournament> db, IMatchDB<Match> mdb)
+        public TournamentManager(ITournamentDB<Tournament> db)
         {
             this.db = db;
-            this.mdb = mdb;
             // tournaments =db.GetAllTournaments();
             db.GetAllTournamentsAndParticipants(tournaments);
             CheckIfOverDate();
-            CheckIfComplete();
         }
 
         public void AddTournament(Tournament tournament)
         {
-            if (tournaments.Find(x => x.Adress == tournament.Adress && x.StartDate == tournament.StartDate) is null)
+            if (tournaments.Find(x => x.StartDate == tournament.StartDate && x.Adress == tournament.Adress) is null)
             {
                 Tournament tournamentWithId = new Tournament(db.GetNextID(), tournament.Name, tournament.Description, tournament.StartDate, tournament.EndDate, tournament.MinCompetitors, tournament.MaxCompetitors, tournament.Adress, tournament.TournamentSystem, tournament.Status);
                 db.AddTournament(tournamentWithId);
@@ -53,20 +50,15 @@ namespace LogicLayer
                 }
             }
         }
-        public void CheckIfComplete()
+        public void CheckIfComplete(Tournament t)
         {
-            foreach (Tournament t in tournaments)
+            if (t.Status == Status.SCHEDULED)
             {
-                mdb.GetMatches(t);
-                if (t.Status == Status.SCHEDULED)
+                if (t.Matches.Any(x => x.IsComplete == false))
                 {
-                    if (t.Matches.Any(x => x.IsComplete == false))
-                    {
-                        return;
-                    }
-                    db.UpdateTournamentStatus(t, Status.COMPLETED);
+                    return;
                 }
-
+                db.UpdateTournamentStatus(t, Status.COMPLETED);
             }
         }
 
@@ -86,6 +78,7 @@ namespace LogicLayer
 
 
         public bool SignForTournament(Tournament t, User u)
+        
         {
             if (t.Competitors.Find(x => x.Id == u.Id) is null)
             {

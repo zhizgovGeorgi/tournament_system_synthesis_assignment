@@ -20,11 +20,6 @@
                     <p>Last Name:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname).Value</p>
                     <p>Email:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value</p>
                     <p>Adress:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.StreetAddress).Value</p>
-                    @if (User.IsInRole("Administrator"))
-                    {
-                        <p>Role:  @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value</p>
-
-                    }
                 </div>
 
                 <div class="singleTournamentForPerson">
@@ -37,7 +32,7 @@
                         {
                             if (m.Player1.User.Email == u.Email || m.Player2.User.Email == u.Email)
                             {
-                                <p class="paragraph">@m</p>
+                                <p class="paragraph">@m Score : @m.Player1.Score : @m.Player2.Score </p>
                             }
                         }
                     }

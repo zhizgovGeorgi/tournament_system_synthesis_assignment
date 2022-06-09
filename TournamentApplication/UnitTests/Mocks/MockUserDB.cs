@@ -16,7 +16,7 @@ namespace UnitTests.Mocks
 
         public void GetAllTournamentsForParticipants(List<User> users)
         {
-            throw new NotImplementedException();
+
         }
 
         public List<User> Read()

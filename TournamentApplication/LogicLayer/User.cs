@@ -19,20 +19,21 @@ namespace LogicLayer
         private List<Tournament> tournaments;
 
         public int Id { get { return this.id; } }
-        
+
         public string FName { get { return this.fName; } }
         public string LName { get { return this.lName; } }
 
-        [Required(ErrorMessage ="Please enter your email")] [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", ErrorMessage = "Must be a valid Email")]
+        [Required(ErrorMessage = "Please enter your email")]
+        [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", ErrorMessage = "Must be a valid Email")]
         public string Email { get { return this.email; } }
         public string Adress { get { return this.adress; } }
 
-        public string Password 
-        { 
+        public string Password
+        {
             get { return this.password; }
             private set
             {
-                if (value.Length < 6  )
+                if (value.Length < 6)
                 {
                     throw new MyException("Password must contain at least 6 or more symbols");
                 }
@@ -40,7 +41,7 @@ namespace LogicLayer
             }
         }
         public string Role { get { return this.role; } }
-        public List<Tournament> Tournaments{ get { return this.tournaments; } }
+        public List<Tournament> Tournaments { get { return this.tournaments; } }
 
         public User(int id, string fName, string lName, string email, string adress, string password, string role)
         {
@@ -54,7 +55,7 @@ namespace LogicLayer
         }
 
 
-        public User( string fName, string lName, string email, string adress, string password, string role)
+        public User(string fName, string lName, string email, string adress, string password, string role)
         {
             this.fName = fName;
             this.lName = lName;
@@ -63,7 +64,7 @@ namespace LogicLayer
             this.Password = password;
             this.role = role;
         }
-      
+
         public void AssignTournament(Tournament tournament)
         {
             tournaments.Add(tournament);

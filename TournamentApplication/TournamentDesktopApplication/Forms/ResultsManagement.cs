@@ -102,10 +102,6 @@ namespace TournamentDesktopApplication.Forms
             
         }
 
-        private void lbTournaments_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void lbRounds_DoubleClick(object sender, EventArgs e)
         {
@@ -132,12 +128,6 @@ namespace TournamentDesktopApplication.Forms
             }
         }
 
-        private void btnGenerateSchedule_Click(object sender, EventArgs e)
-        {
-
-
-
-        }
 
         private void btnSaveResult_Click(object sender, EventArgs e)
         {
@@ -152,6 +142,7 @@ namespace TournamentDesktopApplication.Forms
                 }
                 m.SetScore((int)numPlayer1.Value, (int)numPlayer2.Value);
                 mm.SetScore(m, t);
+                tm.CheckIfComplete(t);
                 MessageBox.Show("Successful update of score of the match");
             }
             catch (MyException ex)
@@ -166,10 +157,6 @@ namespace TournamentDesktopApplication.Forms
             }
         }
 
-        private void lbMatches_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void lbMatches_DoubleClick(object sender, EventArgs e)
         {
@@ -177,5 +164,7 @@ namespace TournamentDesktopApplication.Forms
             numPlayer1.Value = m.Player1.Score;
             numPlayer2.Value = m.Player2.Score;
         }
+
+        
     }
 }

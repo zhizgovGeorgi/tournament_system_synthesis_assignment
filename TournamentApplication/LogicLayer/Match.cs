@@ -27,7 +27,7 @@ namespace LogicLayer
             get { return this.player2; }
             private set
             {
-                if (value == player1)
+                if (value.User.Email == player1.User.Email)
                 {
                     throw new MyException("A player cannot play against himself!");
                 }
@@ -61,7 +61,7 @@ namespace LogicLayer
 
         public override string ToString()
         {
-            return $"{Player1.User.FName} {Player1.User.LName} vs. {Player2.User.FName} {Player2.User.LName} SCORE: {Player1.Score} - {Player2.Score}";
+            return $"{Player1.User.FName} {Player1.User.LName} vs. {Player2.User.FName} {Player2.User.LName} ";
         }
     }
 }

@@ -10,11 +10,22 @@ namespace LogicLayer
         public User User { get { return this.user; } }
 
 
-        public int Score { get { return this.score; } internal set { this.score = value; } }
+        public int Score
+        {
+            get { return this.score; }
+            internal set
+            {
+                if (value < 0)
+                {
+                    throw new MyException("Score cannot be a negative number!");
+                }
+                this.score = value;
+            }
+        }
         public Player(User user, int score)
         {
             this.user = user;
-            this.score = score;
+            this.Score = score;
         }
 
     }

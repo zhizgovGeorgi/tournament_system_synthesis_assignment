@@ -16,6 +16,6 @@ namespace LogicLayer
         bool SignForTournament(Tournament t, User u);
         List<Tournament> GetAllTournaments();
         void UpdateTournamentStatus(Tournament t, Status status);
-        void CheckIfComplete();
+        void CheckIfComplete(Tournament t);
     }
 }

@@ -68,6 +68,18 @@ namespace TournamentDesktopApplication.Forms
             cbTournamentSystem.Text = tournament.TournamentSystem.ToString();
         }
 
+        private void LoadTournament(Status status)
+        {
+            lbTournaments.Items.Clear();
+            foreach (Tournament t in tm.GetAllTournaments())
+            {
+                if (t.Status == status)
+                {
+                    lbTournaments.Items.Add(t);
+                }
+            }
+        }
+
         private void LoadTournament()
         {
             lbTournaments.Items.Clear();
@@ -188,6 +200,35 @@ namespace TournamentDesktopApplication.Forms
                 MessageBox.Show("Too late to update the tournament! You can only update it when it is upcoming(Open for refistration)!");
                 return;
             }
+        }
+
+        private void rbAll_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadTournament();
+        }
+
+        private void rbUpcoming_CheckedChanged(object sender, EventArgs e)
+        {
+            Status status = Status.UPCOMING;
+            LoadTournament(status);
+        }
+
+        private void rbOverDate_CheckedChanged(object sender, EventArgs e)
+        {
+            Status status = Status.OVERDATE;
+            LoadTournament(status);
+        }
+
+        private void rbScheduled_CheckedChanged(object sender, EventArgs e)
+        {
+            Status status = Status.SCHEDULED;
+            LoadTournament(status);
+        }
+
+        private void rbCancelled_CheckedChanged(object sender, EventArgs e)
+        {
+            Status status = Status.CANCELED;
+            LoadTournament(status);
         }
     }
 }
