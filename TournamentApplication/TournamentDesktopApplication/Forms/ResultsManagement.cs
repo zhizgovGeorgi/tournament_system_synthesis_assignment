@@ -39,8 +39,12 @@ namespace TournamentDesktopApplication.Forms
 
         private void LoadRounds(Tournament t)
         {
+            if (t is null)
+            {
+                return;
+            }
             lbRounds.Items.Clear();
-            for (int i = 1; i < t.Competitors.Count; i++)
+            for (int i = 1; i <= t.TournamentSystem.CalculateRounds(t.Competitors.Count); i++)
             {
                 lbRounds.Items.Add(i);
             }
@@ -50,28 +54,34 @@ namespace TournamentDesktopApplication.Forms
         {
             lbMatches.Items.Clear();
 
+            if (t is null)
+            {
+                return;
+            }
 
             if (t.Status == Status.SCHEDULED || t.Status == Status.COMPLETED)
             {
-                mm.GetMatchesForTournaament(t);
-                LoadRounds(t);
+                mm.GetMatchesForTournament(t);
 
             }
             else if (t.Status == Status.OVERDATE)
             {
-                List<Match> matches = t.TournamentSystem.CreateMatchSchedule(t.Competitors, t);
+                List<Match> matches = t.TournamentSystem.CreateMatchSchedule(t);
                 mm.AddMatch(matches, t);
-                LoadRounds(t);
                 MessageBox.Show($"Schedule has just been generated for {t.Name} tournament!");
+                lbRounds.Items.Clear();
+                LoadTournaments();
             }
             else if (t.Status == Status.CANCELED)
             {
                 MessageBox.Show($"Unfortunately, this tournament has been cancelled!");
+                lbRounds.Items.Clear();
                 return;
             }
             else
             {
-                MessageBox.Show($"It is too late to load the matches!");
+                lbRounds.Items.Clear();
+                MessageBox.Show($"It is too early to load the matches!");
                 return;
             }
         }
@@ -90,43 +100,9 @@ namespace TournamentDesktopApplication.Forms
                 }
             }
             lblResultManagement.ForeColor = ThemeColour.SecondaryColour;
-            //btnAdd.ForeColor = ThemeColour.PrimaryColour;
-            //btnDeleteTournament.ForeColor = ThemeColour.PrimaryColour;
-            //btnEditTournament.ForeColor = ThemeColour.PrimaryColour;
-        }
-
-        private void lbTournaments_DoubleClick(object sender, EventArgs e)
-        {
-            Tournament t = (Tournament)lbTournaments.SelectedItem;
-            LoadMatches(t);
-            
         }
 
 
-        private void lbRounds_DoubleClick(object sender, EventArgs e)
-        {
-            lbMatches.Items.Clear();
-            Tournament t = (Tournament)lbTournaments.SelectedItem;
-            try
-            {
-                foreach (Match m in t.Matches)
-                {
-                    if (m.Rounds == (int)lbRounds.SelectedItem)
-                    {
-                        lbMatches.Items.Add(m);
-                    }
-                }
-
-            }
-            catch (MyException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
 
 
         private void btnSaveResult_Click(object sender, EventArgs e)
@@ -158,13 +134,68 @@ namespace TournamentDesktopApplication.Forms
         }
 
 
-        private void lbMatches_DoubleClick(object sender, EventArgs e)
+
+        private void lbTournaments_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Tournament t = (Tournament)lbTournaments.SelectedItem;
+            if (t is null)
+            {
+                MessageBox.Show("No tournament selected");
+                return;
+            }
+            LoadRounds(t);
+            LoadMatches(t);
+            tm.CheckIfComplete(t);
+        }
+
+        private void lbMatches_SelectedIndexChanged(object sender, EventArgs e)
         {
             Match m = (Match)lbMatches.SelectedItem;
+            if (m is null)
+            {
+                MessageBox.Show("No match selected");
+                return;
+            }
             numPlayer1.Value = m.Player1.Score;
             numPlayer2.Value = m.Player2.Score;
         }
 
-        
+        private void lbRounds_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lbMatches.Items.Clear();
+            Tournament t = (Tournament)lbTournaments.SelectedItem;
+            if (t is null)
+            {
+                MessageBox.Show("No tournament selected");
+                return;
+            }
+
+            try
+            {
+                if (lbRounds.SelectedItem is null)
+                {
+                    MessageBox.Show("No tournament selected");
+                    return;
+                }
+                foreach (Match m in t.Matches)
+                {
+                    if (m.Rounds == (int)lbRounds.SelectedItem)
+                    {
+                        lbMatches.Items.Add(m);
+                    }
+                }
+
+            }
+            catch (MyException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
     }
 }

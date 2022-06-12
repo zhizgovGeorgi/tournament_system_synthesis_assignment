@@ -30,7 +30,11 @@ namespace LogicLayer
 
         public User GetUser(string email, string password)
         {
-            return users.Find(x => x.Email == email && x.Password == password);
+            if (users.Find(x => x.Email == email && x.Password == password) != null)
+            {
+                return users.Find(x => x.Email == email && x.Password == password);
+            }
+            throw new MyException("Wrong credentials! Please try again!") ;
         }
 
         public User GetUserByEmail(string email)

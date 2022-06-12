@@ -8,14 +8,34 @@ namespace LogicLayer
 {
     public class Match
     {
-        private int rounds;
-        private int matches;
+        private int roundNr;
+        private int matchNr;
         private Player player1;
         private Player player2;
         private bool isComplete;
 
-        public int Rounds { get { return this.rounds; } }
-        public int Matches { get { return this.matches; } }
+        public int Rounds
+        {
+            get { return this.roundNr; }
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new MyException("This should not be happening");
+                }
+                this.roundNr = value;
+            }
+        }
+        public int Matches { get { return this.matchNr; }
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new MyException("This should not be happening");
+                }
+                this.matchNr = value;
+            }
+        }
         public bool IsComplete { get { return this.isComplete; } }
 
         public Player Player1
@@ -37,8 +57,8 @@ namespace LogicLayer
 
         public Match(int rounds, int matches, Player player1, Player player2, bool isComplete)
         {
-            this.rounds = rounds;
-            this.matches = matches;
+            this.roundNr = rounds;
+            this.matchNr = matches;
             this.player1 = player1;
             this.Player2 = player2;
             this.isComplete = isComplete;

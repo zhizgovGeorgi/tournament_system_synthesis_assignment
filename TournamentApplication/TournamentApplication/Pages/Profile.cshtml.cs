@@ -1,11 +1,13 @@
 using LogicLayer;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
 
 namespace TournamentWebApplication.Pages
 {
+    [Authorize]
     public class ProfileModel : PageModel
     {
         public User user;

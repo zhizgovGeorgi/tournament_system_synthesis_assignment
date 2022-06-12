@@ -8,10 +8,8 @@ namespace LogicLayer
 {
     public class RoundRobin : TournamentSystem
     {
-        public static string Name { get { return "RoundRobin"; } }
         public RoundRobin() : base()
         {
-
 
         }
 
@@ -19,25 +17,20 @@ namespace LogicLayer
         {
             if (n % 2 == 0)
             {
-                base.Rounds = n - 1;
+                return n - 1;
             }
-            else
-            {
-                base.Rounds = n;
-            }
-            return Rounds;
+            return n;
         }
 
         public override int CalculateMatches(int n)
         {
-            return base.Matches = (n * (n - 1)) / 2;
+            return (n * (n - 1)) / 2;
         }
 
         public List<User> CheckIfEvenOrOdd(List<User> competitors)
         {
             if (competitors.Count % 2 != 0)
             {
-                User userB = new User("B", "B", "B", "B", "B", "B");
                 competitors.Add(userB);
             }
             return competitors;
@@ -45,12 +38,12 @@ namespace LogicLayer
 
 
 
-        public override List<Match> CreateMatchSchedule(List<User> competitors, Tournament t)
+        public override List<Match> CreateMatchSchedule(Tournament t)
         {
 
             List<Match> schedule = new List<Match>();
 
-            List<User> allCompetitors = CheckIfEvenOrOdd(competitors);
+            List<User> allCompetitors = CheckIfEvenOrOdd(t.Competitors);
 
 
             List<User> topBracket = new List<User>();
@@ -75,14 +68,15 @@ namespace LogicLayer
             {
                 for (int j = 0; j < CalculateMatches(allCompetitors.Count) / CalculateRounds(allCompetitors.Count()); j++)
                 {
-                    User user1 = topBracket[j];
-                    User user2 = bottomBracket[j];
-                    Player player1 = new Player(user1, 0);
-                    Player player2 = new Player(user2, 0);
-                    Match match = new Match(i + 1, j + 1, player1, player2, false);
-                    if (player1.User.Email != "B" && player2.User.Email != "B")
+                    if (topBracket[j] != userB && bottomBracket[j] != userB)
                     {
+                        User user1 = topBracket[j];
+                        User user2 = bottomBracket[j];
+                        Player player1 = new Player(user1, 0);
+                        Player player2 = new Player(user2, 0);
+                        Match match = new Match(i + 1, j + 1, player1, player2, false);
                         schedule.Add(match);
+
                     }
                 }
                 topBracket.Insert(1, bottomBracket.Last());
@@ -91,6 +85,7 @@ namespace LogicLayer
                 topBracket.Remove(topBracket.Last());
             }
             t.AssignMatches(schedule);
+            t.UpdateStatus(Status.SCHEDULED);
             return schedule;
 
         }
@@ -98,7 +93,7 @@ namespace LogicLayer
 
         public override string ToString()
         {
-            return Name;
+            return "RoundRobin";
         }
     }
 }

@@ -9,10 +9,9 @@ namespace LogicLayer
     public abstract class TournamentSystem
     {
 
-        public int Rounds { get; set; }
-        public int Matches { get;set; }
+        protected static User userB = new User("B", "B", "Baa@gmail.com", "B", "Bbbbbb", "B");
 
-        protected TournamentSystem( )
+        public TournamentSystem( )
         {
         }
 
@@ -20,7 +19,7 @@ namespace LogicLayer
 
         public abstract int CalculateMatches(int n);
 
-        public abstract List<Match> CreateMatchSchedule(List<User> competitors, Tournament t);
+        public abstract List<Match> CreateMatchSchedule(Tournament t);
 
         public abstract override string ToString();
     }

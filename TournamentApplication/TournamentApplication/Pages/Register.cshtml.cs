@@ -17,7 +17,7 @@ namespace TournamentWebApplication.Pages
             this.um = um;
         }
 
-        
+
         public void OnGet()
         {
         }
@@ -27,10 +27,25 @@ namespace TournamentWebApplication.Pages
 
             if (ModelState.IsValid)
             {
-                User user = new User(register.FName, register.LName, register.Email, register.Adress, register.Password, "User");
+                try
+                {
+                    User user = new User(register.FName, register.LName, register.Email, register.Adress, register.Password, "User");
 
-                um.AddUser(user);
-                return RedirectToPage("LogIn");
+                    um.AddUser(user);
+                    return RedirectToPage("LogIn");
+
+                }
+                catch (MyException ex)
+                {
+
+                    ViewData["Message"] = ex.Message;
+                }
+                catch (Exception ex)
+                {
+
+                    ViewData["Message"] = ex.Message;
+                }
+
 
             }
             return Page();

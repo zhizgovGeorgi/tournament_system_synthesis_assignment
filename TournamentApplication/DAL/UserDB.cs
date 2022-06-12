@@ -170,7 +170,6 @@ namespace DAL
                     conn.Close();
                 }
             }
-
         }
     }
 }

@@ -1,0 +1,21 @@
+﻿@page
+@model TournamentWebApplication.Pages.TournamentWithMatchesModel
+@{
+    Tournament t = Model.t;
+}
+@using LogicLayer;
+
+<div class="showTournament">
+    <form method="post">
+        <h1>Tournament - @t.Name</h1>
+        <h2>Description: @t.Description</h2>
+        <h2>Adress: @t.Adress</h2>
+        <h2>Start Date: @t.StartDate.ToShortDateString()</h2>
+        <h2>End Date: @t.EndDate.ToShortDateString()</h2>
+        <h3>All individual matches:</h3>
+        @foreach(Match m in t.Matches)
+        {
+            <p>@m Score: @m.Player1.Score : @m.Player2.Score</p>
+        }
+    </form>
+</div>

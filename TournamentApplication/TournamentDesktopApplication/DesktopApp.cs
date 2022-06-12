@@ -85,10 +85,7 @@ namespace TournamentDesktopApplication
             lblTitle.Text = childForm.Text;
         }
 
-        private void btnUsers_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Forms.UserManagement(um), sender);
-        }
+     
 
         private void btnTournaments_Click(object sender, EventArgs e)
         {

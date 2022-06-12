@@ -4,15 +4,15 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>350</x>
-      <y>740</y>
-      <w>290</w>
-      <h>330</h>
+      <x>600</x>
+      <y>2210</y>
+      <w>390</w>
+      <h>570</h>
     </coordinates>
     <panel_attributes>Tournament
 --
 - id: int
-- sportType: SportType
+- name: string
 - description: string
 - startDate: DateTime
 - endDate: DateTime
@@ -20,55 +20,77 @@
 - maxCompetitors: int
 - adress: string
 --
-+ Tournament(id: int, sportType: SportType
++ Id {get;}: int
++ Name{get; private set;}: string
++ Description{get; private set;}: string
++ StartDate{get; private set;}: DateTime
++ EndDate{get; private set;}: DateTime
++ MinCompetitors{get; private set;}: int
++ MaxCompetitors{get; private set;}: int
++ Adress{get; private set;}: string
++ TournamentSystem{get;}: TournamentSystem
++ Competitors{get;}: List&lt;User&gt;
++ Matches{get;}: List&lt;Match&gt;
++ Status{get;}: Status
++ Tournament(id: int, name: string
 startDate: DateTime, endDate: DateTime,
 minCompetitors: int,maxCompetitors: int,
 adress: string, tournamentSystem: string) 
-+ Tournament( sportType: SportType
++ Tournament( name: string
 startDate: DateTime, endDate: DateTime,
 minCompetitors: int,maxCompetitors: int,
 adress: string, tournamentSystem: string)
-+ Tournament()
++ UpdateStatus(s: Status): void
++ AssignPlayer(u: User): void
++ AssignPlayers(users: List&lt;User&gt;): void
++ AssignMatches(matches: List&lt;Match&gt;): void
 + ToString(): string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>370</x>
-      <y>160</y>
-      <w>290</w>
-      <h>110</h>
+      <x>620</x>
+      <y>1630</y>
+      <w>400</w>
+      <h>230</h>
     </coordinates>
     <panel_attributes>TournamentManager
 --
 
 --
++ TournamentManager(db: ITournamentDB&lt;Tournament&gt;)
 + AddTournament(t: Tournament): void
-+ RemoveTournament(t: Tournament): void
-+ GetTournaments(): List&lt;Tournaments&gt;
-</panel_attributes>
++ CheckIfOverDate(): void
++ CheckIfComplete(t: Tournament): void
++ UpdateTournamentStatus(t: Tournament,
+s: Status): void
++ SignInForTournament(t: Tournament,
+u: User): bool
++ GetTournament(id: int): Tournament
++ EditTournament(t: Tournament): void
++ GetAllTournaments(): List&lt;Tournaments&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>500</x>
-      <y>260</y>
+      <x>750</x>
+      <y>1850</y>
       <w>110</w>
-      <h>500</h>
+      <h>380</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=*tournaments</panel_attributes>
-    <additional_attributes>10.0;480.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;360.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1040</x>
-      <y>750</y>
+      <x>1290</x>
+      <y>2220</y>
       <w>290</w>
-      <h>280</h>
+      <h>430</h>
     </coordinates>
     <panel_attributes>User
 --
@@ -80,71 +102,84 @@ m1=*tournaments</panel_attributes>
 - password: string
 - role: string
 --
++ FName{get; private set;}: string
++ LName{get; private set;}: string
++ Email{get;}: string
++ Adress{get; private set;}: string
++ Password{get; private set;}: string
++ Role{get;}: string
++ Tournaments{get;}: List&lt;Tournament&gt;
 + User( id: int, fName: string, lName: string,
 email: string, adress: string, password: string,
 role: string)
 + User( fName: string, lName: string,
 email: string, adress: string, password: string,
 role: string)
-+ User()
++ AssignTournament(t: Tournament): void
++ AssignTournaments(tournaments: 
+List&lt;Tournament&gt;): void
 + ToString(): string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1180</x>
-      <y>280</y>
+      <x>1430</x>
+      <y>1810</y>
       <w>70</w>
-      <h>490</h>
+      <h>430</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=*users</panel_attributes>
-    <additional_attributes>10.0;470.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;410.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1060</x>
-      <y>170</y>
+      <x>1310</x>
+      <y>1640</y>
       <w>290</w>
-      <h>120</h>
+      <h>180</h>
     </coordinates>
     <panel_attributes>UserManager
 --
 
 --
++ UserManager(db: IUserDB&lt;User&gt;)
 + AddUser(u: User): void
-+ RemoveUser(u: User): void
++ GetUser(email: string, password: string):
+User
++ GetUserByEmail(email: string):
+User
 + EditUser(u: User): void
-+ GetUser(): List&lt;User&gt;
++ GetAllUser(): List&lt;User&gt;
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
-      <y>860</y>
-      <w>430</w>
+      <x>980</x>
+      <y>2330</y>
+      <w>330</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;
 m1= *tournaments
 m2= users*</panel_attributes>
-    <additional_attributes>10.0;10.0;410.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;310.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>340</x>
-      <y>1280</y>
+      <x>590</x>
+      <y>2870</y>
       <w>290</w>
-      <h>160</h>
+      <h>140</h>
     </coordinates>
     <panel_attributes>/TournamentSystem/
 --
-
+_# userB: User_
 --
 /+ TournamentSystem()/
 /+ CreateMatchSchedule(competitors: /
@@ -154,19 +189,19 @@ m2= users*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>470</x>
-      <y>1430</y>
+      <x>720</x>
+      <y>3000</y>
       <w>330</w>
-      <h>360</h>
+      <h>260</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;170.0;310.0;170.0;310.0;340.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;310.0;70.0;310.0;240.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>660</x>
-      <y>1770</y>
+      <x>910</x>
+      <y>3240</y>
       <w>290</w>
       <h>140</h>
     </coordinates>
@@ -177,38 +212,46 @@ m2= users*</panel_attributes>
 + RoundRobin()
 + CalculateRounds(n: int): int
 + CalculateMatches(n: int): void
-+ CreateMatchSchedule(competitors: 
-List&lt;User&gt;): List&lt;Match&gt;
++ CreateMatchSchedule(t: Tournament):
+List&lt;Match&gt;
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>1060</y>
-      <w>30</w>
-      <h>240</h>
+      <x>730</x>
+      <y>2770</y>
+      <w>40</w>
+      <h>120</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;220.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1170</x>
-      <y>1630</y>
+      <x>2160</x>
+      <y>2240</y>
       <w>230</w>
-      <h>150</h>
+      <h>240</h>
     </coordinates>
     <panel_attributes>Match
 --
 - roundNr: int
 - matchNr: int
+- isComplete: bool
 --
++ Rounds{get; private set;}: int
++ Matches{get; private set;}: int
++ IsComplete{get; private set;}: bool
++ Player1{get; private set;}: User
++ Player2{get; private set;}: User
 + Match(roundNr: int,matchNr: int,
 player1: User, player2: User )
-+ Match()
++ SetScore(score1: int, score2: int): void
 + ToString(): string
 </panel_attributes>
     <additional_attributes/>
@@ -216,58 +259,37 @@ player1: User, player2: User )
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1510</x>
-      <y>1660</y>
-      <w>120</w>
-      <h>70</h>
+      <x>1900</x>
+      <y>2460</y>
+      <w>190</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>Player
 --
 - score: int
 --
-+ Player()</panel_attributes>
++ Score{get; internal set;}: int
++ Player(u: User,
+score: int)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1390</x>
-      <y>1670</y>
-      <w>140</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;
-m2= 2</panel_attributes>
-    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>630</x>
-      <y>1030</y>
-      <w>560</w>
-      <h>670</h>
+      <x>980</x>
+      <y>2470</y>
+      <w>1390</w>
+      <h>230</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=matches*</panel_attributes>
-    <additional_attributes>540.0;640.0;270.0;640.0;270.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1220</x>
-      <y>1020</y>
-      <w>360</w>
-      <h>660</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;350.0;340.0;350.0;340.0;640.0</additional_attributes>
+    <additional_attributes>1310.0;10.0;1310.0;210.0;170.0;210.0;170.0;40.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>330</x>
-      <y>1770</y>
+      <x>580</x>
+      <y>3240</y>
       <w>290</w>
       <h>140</h>
     </coordinates>
@@ -275,23 +297,482 @@ m1=matches*</panel_attributes>
 --
 
 --
-+ RoundRobin()
++ DoubleRoundRobin()
 + CalculateRounds(n: int): int
 + CalculateMatches(n: int): void
-+ CreateMatchSchedule(competitors: 
-List&lt;User&gt;): List&lt;Match&gt;
++ CreateMatchSchedule(t: Tournament):
+List&lt;Match&gt;
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>470</x>
-      <y>1590</y>
+      <x>720</x>
+      <y>3060</y>
       <w>30</w>
       <h>200</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>620</x>
+      <y>1230</y>
+      <w>290</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+ITournamentDB
+--
++ AddTournament(t: Tournament): void
++ GetAllTournamentsAndParticipants
+(List&lt;Tournaments&gt;): void
++ SignForTournament(t: Tournament, 
+u: User): void
++ GetNextID(): int
++ EditTournament(t: Tournament): void
++ UpdateTournamentStatus(t: Tournament,
+s: Status): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>880</y>
+      <w>290</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>TournamentDB
+--
+- conn: MySqlConnection
+--
++ TournamentDB()
++ AddTournament(t: Tournament): void
++ GetAllTournamentsAndParticipants
+(List&lt;Tournaments&gt;): void
++ SignForTournament(t: Tournament, 
+u: User): void
++ GetNextID(): int
++ EditTournament(t: Tournament): void
++ UpdateTournamentStatus(t: Tournament,
+s: Status): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>1090</y>
+      <w>30</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>1410</y>
+      <w>30</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>1630</y>
+      <w>290</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+ITournamentManager
+--
++ AddTournament(t: Tournament): void
++ CheckIfComplete(t: Tournament): void
++ SignInForTournament(t: Tournament,
+u: User): bool
++ EditTournament(t: Tournament): void
++ GetAllTournaments(): List&lt;Tournaments&gt;
++ UpdateTournamentStatus(t: Tournament,
+s: Status): void
++ GetTournament(id: int): Tournament</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>1670</y>
+      <w>360</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;340.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>2310</y>
+      <w>140</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+Status
+--
+UPCOMING
+OVERDATE
+SCHEDULED
+CANCELED
+COMPLETE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>370</x>
+      <y>2360</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>10.0;10.0;230.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1280</x>
+      <y>230</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>SystemDivider
+--
++ DivideTournamentSystems(systemNames:
+string): TournamentSystem</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>240</y>
+      <w>440</w>
+      <h>660</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>420.0;10.0;10.0;10.0;10.0;640.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1950</x>
+      <y>2320</y>
+      <w>230</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=2</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0;210.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1570</x>
+      <y>2470</y>
+      <w>350</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>10.0;10.0;330.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1700</x>
+      <y>1630</y>
+      <w>290</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IUserManager
+--
++ AddUser(u: User): void
++ GetUser(email: string, password: string): void
++ GetUserNyEmail(email: string): void
++ GetAllUsers(): List&lt;User&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1590</x>
+      <y>1690</y>
+      <w>130</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1290</x>
+      <y>1210</y>
+      <w>290</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IUserDB
+--
++ AddUser(obj: User): void
++ Update(obj: User): void
++ GetAllTournamentsForParticipants
+(participants: List&lt;User&gt;): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1440</x>
+      <y>1320</y>
+      <w>30</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1430</x>
+      <y>1040</y>
+      <w>30</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1290</x>
+      <y>890</y>
+      <w>290</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>UserDB
+--
+- conn: MySqlConnection
+--
++ UserDB()
++ AddUser(u: User): void
++ GetAllTournamentsForParticipants
+(participants: List&lt;User&gt;): void
++ ReadUser(id: int): User
++ Update(u: User): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1750</x>
+      <y>220</y>
+      <w>240</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>ConnectionDB
+--
++ GetConnection(): MySqlConnection</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2150</x>
+      <y>1600</y>
+      <w>290</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>MatchManager
+--
+
+--
++ MatchManager(db: IMatchDB&lt;Match&gt;)
++ AddMatch(m: Match): void
++ GetMatchesForTournament(t: Tournament):
+void
++ SetScore(m: Match, t: Tournament): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2430</x>
+      <y>1690</y>
+      <w>130</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2540</x>
+      <y>1650</y>
+      <w>290</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IMatchManager
+--
++ AddMatch(m: Match): void
++ GetMatchesForTournament(t: Tournament):
+void
++ SetScore(m: Match, t: Tournament): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2280</x>
+      <y>1280</y>
+      <w>30</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2150</x>
+      <y>1170</y>
+      <w>300</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IMatchDB
+--
++ AddMatch(m: Match): void
++ GetMatchesForTournament(t: Tournament):
+void
++ SetScore(m: Match, t: Tournament): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2160</x>
+      <y>830</y>
+      <w>290</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>MatchDB
+--
+- conn: MySqlConnection
+--
++ MatchDB()
++ AddMatch(m: Match): void
++ GetMatchesForTournament(t: Tournament):
+void
++ SetScore(m: Match, t: Tournament): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2290</x>
+      <y>980</y>
+      <w>30</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;190.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1420</x>
+      <y>280</y>
+      <w>40</w>
+      <h>630</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;610.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>890</x>
+      <y>570</y>
+      <w>1430</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>1410.0;260.0;1410.0;10.0;10.0;10.0;10.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1810</x>
+      <y>260</y>
+      <w>30</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1510</x>
+      <y>570</y>
+      <w>30</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1410</x>
+      <y>50</y>
+      <w>30</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1290</x>
+      <y>0</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>TournamentNames
+--
+_+ RoundRobin(): string_
+_+ DoubleRoundRobin(): string_</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

@@ -35,6 +35,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Tournaments">Tournaments</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Results">Results</a>
+                        </li>
                         @if (User.IsInRole("User") == false && User.IsInRole("Administrator") == false)
                         {
                             <li class="nav-item">

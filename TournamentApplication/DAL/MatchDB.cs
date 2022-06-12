@@ -22,7 +22,7 @@ namespace DAL
             string sqlStatement = "";
             for (int i = 0; i < matches.Count; i++)
             {
-                sqlStatement += $"INSERT INTO tournament_match ( tournamentId, roundNr, matchNr, player1,  score1, player2, score2, isComplete) VALUES ( @tournamentId, @roundNr{i}, @matchNr{i}, @player1{i},  @score1{i}, @player2{i}, @score2{i}, isComplete{i});";
+                sqlStatement += $"INSERT INTO tournament_match ( tournamentId, roundNr, matchNr, player1,  score1, player2, score2, isCompleted) VALUES ( @tournamentId, @roundNr{i}, @matchNr{i}, @player1{i},  @score1{i}, @player2{i}, @score2{i}, isCompleted);";
 
             }
             sqlStatement += "UPDATE tournament SET status=@status WHERE id = @id;";
@@ -30,6 +30,7 @@ namespace DAL
             command.Parameters.AddWithValue("@tournamentId", t.Id);
             command.Parameters.AddWithValue("@id", t.Id);
             command.Parameters.AddWithValue("@status", Status.SCHEDULED.ToString());
+            command.Parameters.AddWithValue($"@isCompleted", false);
 
             for (int i = 0; i < matches.Count; i++)
             {
@@ -39,7 +40,6 @@ namespace DAL
                 command.Parameters.AddWithValue($"@score1{i}", matches[i].Player1.Score);
                 command.Parameters.AddWithValue($"@player2{i}", matches[i].Player2.User.Id);
                 command.Parameters.AddWithValue($"@score2{i}", matches[i].Player2.Score);
-                command.Parameters.AddWithValue($"@isComplete{i}", matches[i].IsComplete);
 
             }
             try

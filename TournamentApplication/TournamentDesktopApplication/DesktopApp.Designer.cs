@@ -32,7 +32,6 @@
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnResults = new System.Windows.Forms.Button();
             this.btnTournaments = new System.Windows.Forms.Button();
-            this.btnUsers = new System.Windows.Forms.Button();
             this.paneLogo = new System.Windows.Forms.Panel();
             this.lblLogo = new System.Windows.Forms.Label();
             this.panelTitleBar = new System.Windows.Forms.Panel();
@@ -52,7 +51,6 @@
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.panelMenu.Controls.Add(this.btnResults);
             this.panelMenu.Controls.Add(this.btnTournaments);
-            this.panelMenu.Controls.Add(this.btnUsers);
             this.panelMenu.Controls.Add(this.paneLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
@@ -68,7 +66,7 @@
             this.btnResults.ForeColor = System.Drawing.Color.White;
             this.btnResults.Image = ((System.Drawing.Image)(resources.GetObject("btnResults.Image")));
             this.btnResults.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnResults.Location = new System.Drawing.Point(0, 200);
+            this.btnResults.Location = new System.Drawing.Point(0, 140);
             this.btnResults.Name = "btnResults";
             this.btnResults.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnResults.Size = new System.Drawing.Size(220, 60);
@@ -87,7 +85,7 @@
             this.btnTournaments.ForeColor = System.Drawing.Color.White;
             this.btnTournaments.Image = ((System.Drawing.Image)(resources.GetObject("btnTournaments.Image")));
             this.btnTournaments.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTournaments.Location = new System.Drawing.Point(0, 140);
+            this.btnTournaments.Location = new System.Drawing.Point(0, 80);
             this.btnTournaments.Name = "btnTournaments";
             this.btnTournaments.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnTournaments.Size = new System.Drawing.Size(220, 60);
@@ -97,25 +95,6 @@
             this.btnTournaments.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTournaments.UseVisualStyleBackColor = true;
             this.btnTournaments.Click += new System.EventHandler(this.btnTournaments_Click);
-            // 
-            // btnUsers
-            // 
-            this.btnUsers.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUsers.FlatAppearance.BorderSize = 0;
-            this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsers.ForeColor = System.Drawing.Color.White;
-            this.btnUsers.Image = ((System.Drawing.Image)(resources.GetObject("btnUsers.Image")));
-            this.btnUsers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsers.Location = new System.Drawing.Point(0, 80);
-            this.btnUsers.Name = "btnUsers";
-            this.btnUsers.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnUsers.Size = new System.Drawing.Size(220, 60);
-            this.btnUsers.TabIndex = 1;
-            this.btnUsers.Text = "  Users";
-            this.btnUsers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnUsers.UseVisualStyleBackColor = true;
-            this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
             // 
             // paneLogo
             // 
@@ -223,7 +202,6 @@
 
         private Panel panelMenu;
         private Button btnTournaments;
-        private Button btnUsers;
         private Panel paneLogo;
         private Label lblLogo;
         private Panel panelTitleBar;

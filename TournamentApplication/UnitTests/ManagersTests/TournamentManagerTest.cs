@@ -99,8 +99,8 @@ namespace UnitTests.ManagerTest
         public void GetAllTournamentTest()
         {
             TournamentSystem ts = new RoundRobin();
-            Tournament t = new Tournament(0, "Badminton", "Descriptive Description of Description", DateTime.Today.AddDays(16), DateTime.Now.AddDays(18), 2, 10, "Adress123", ts, Status.UPCOMING);
-            Tournament t2 = new Tournament(2, "Emperors Badminton Cup", "Descriptive Description of Description", DateTime.Today.AddDays(23), DateTime.Now.AddDays(22), 2, 12, "Adress123", ts, Status.UPCOMING);
+            Tournament t = new Tournament(1, "Badminton", "Descriptive Description of Description", DateTime.Today.AddDays(16), DateTime.Now.AddDays(18), 2, 10, "Adress123", ts, Status.UPCOMING);
+            Tournament t2 = new Tournament(2, "Emperors Badminton Cup", "Descriptive Description of Description", DateTime.Today.AddDays(23), DateTime.Now.AddDays(24), 2, 12, "Adress123", ts, Status.UPCOMING);
             MockTournamentDB mt = new MockTournamentDB();
             TournamentManager manager = new TournamentManager(mt);
 

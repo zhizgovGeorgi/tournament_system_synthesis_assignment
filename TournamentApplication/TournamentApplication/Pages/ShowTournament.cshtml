@@ -18,7 +18,8 @@
         {
             @if (t.Competitors.Find(x => x.Email == User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value) is null)
             {
-                <button class="btn btn-default" asp-route-id="@t.Id" asp-page-handler="SignIn">Sign In</button>
+                <span>@ViewData["Message"]</span>
+                <button class="signInButton" asp-route-id="@t.Id" asp-page-handler="SignIn">Sign In</button>
             }
 
         }

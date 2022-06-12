@@ -10,8 +10,5 @@
     <Compile Update="Forms\TournamentManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\UserManagement.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>

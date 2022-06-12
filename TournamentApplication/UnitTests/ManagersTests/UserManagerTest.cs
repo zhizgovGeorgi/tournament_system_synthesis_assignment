@@ -66,13 +66,14 @@ namespace UnitTests.ManagerTest
             //user won't be created so the method will return null
 
             //arrange
-            User u = new User(1, "Georgi", "Zhizgov", "g.antoanov@abv.bg", "street", "1234567", "User");
+            User u = new User(1, "Georgi", "Zhizgov", "g.antoanov@abv.bg", "street", "1234", "User");
             MockUserDB mu = new MockUserDB();
             UserManager manager = new UserManager(mu);
             //act
 
             //assert
-            Assert.AreEqual(null, manager.GetUser(u.Email, u.Password));
+            Assert.ThrowsException<MyException>(() =>
+            manager.GetUser(u.Email, u.Password));
 
         }
 

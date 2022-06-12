@@ -9,8 +9,11 @@ namespace UnitTests.Mocks
 {
     public class MockMatchDB : IMatchDB<Match>
     {
+        private bool AddMatchCalled;
+
         public void AddMatch(List<Match> matches, Tournament t)
         {
+            this.AddMatchCalled = true;
         }
 
         public void GetMatches(Tournament t)

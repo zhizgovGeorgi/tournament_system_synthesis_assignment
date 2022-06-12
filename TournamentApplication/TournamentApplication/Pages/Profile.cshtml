@@ -26,7 +26,7 @@
                     <p>Tournaments you have participated:</p>
                     @foreach (Tournament t in u.Tournaments.FindAll(x => x.Status == Status.COMPLETED))
                     {
-                        mManager.GetMatchesForTournaament(t);
+                        mManager.GetMatchesForTournament(t);
                         <p class="paragraph">@t</p>
                         foreach (Match m in t.Matches)
                         {
@@ -47,9 +47,9 @@
                 </div>
 
                 <div class="singleTournamentForPerson">
+                    <p>Canceled tournaments you were signed in to participate:</p>
                     @foreach (Tournament t in u.Tournaments.FindAll(x => x.Status == Status.CANCELED))
                     {
-                        <p>Canceled tournaments you were signed in to participate:</p>
                         <p class="paragraph">@t</p>
                     }
                 </div>

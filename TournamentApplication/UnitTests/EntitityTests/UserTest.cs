@@ -30,6 +30,27 @@ namespace UnitTests.EntytiTests
         }
 
         [TestMethod]
+        public void UserConstructorEmptyName()
+        {
+            Assert.ThrowsException<MyException>(() =>
+            new User("", "Zhizgov", "g.antoanov@abv.bg", "street 1", "1234111", "User"));
+        }
+
+        [TestMethod]
+        public void UserConstructorEmptyLastName()
+        {
+            Assert.ThrowsException<MyException>(() =>
+            new User("Georgi", "", "g.antoanov@abv.bg", "street 1", "1234111", "User"));
+        }
+
+        [TestMethod]
+        public void UserConstructorEmptyAdress()
+        {
+            Assert.ThrowsException<MyException>(() =>
+            new User("Georgi", "zhizgov", "g.antoanov@abv.bg", "", "1234111", "User"));
+        }
+
+        [TestMethod]
         public void UserAssignMethod()
         {
             User user = new User("Georgi", "Zhizgov", "g.antoanov@abv.bg", "street 1", "1234567", "User");
@@ -43,6 +64,8 @@ namespace UnitTests.EntytiTests
             user.AssignTournament(tournament2);
 
             Assert.AreEqual(2, user.Tournaments.Count);
+            Assert.AreEqual("Badminton", user.Tournaments.Find(x=>x.Name == tournament.Name).Name);
+            Assert.AreEqual("Badminton Cup", user.Tournaments.Find(x=>x.Name == tournament2.Name).Name);
         }
 
 

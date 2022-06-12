@@ -13,13 +13,12 @@ namespace LogicLayer
         {
             this.db = db;
         }
-
         public void AddMatch(List<Match> matches, Tournament t)
         {
             db.AddMatch(matches, t);
         }
 
-        public void GetMatchesForTournaament(Tournament t)
+        public void GetMatchesForTournament(Tournament t)
         {
             db.GetMatches(t);
         }

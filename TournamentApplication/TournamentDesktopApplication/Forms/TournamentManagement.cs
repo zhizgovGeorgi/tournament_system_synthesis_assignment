@@ -91,46 +91,46 @@ namespace TournamentDesktopApplication.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //if (tbName.Text == "")
-            //{
-            //    MessageBox.Show("Please enter valid name");
-            //    return;
-            //}
-            //else if (tbDescription.Text == "")
-            //{
-            //    MessageBox.Show("Please enter valid description");
-            //    return;
-            //}
-            //else if (tbAdress.Text == "")
-            //{
-            //    MessageBox.Show("Please enter valid adress");
-            //    return;
-            //}
-            //else if (dtpStartDate.Value == null)
-            //{
-            //    MessageBox.Show("Please enter valid start date");
-            //    return;
-            //}
-            //else if (dtpEndDate.Value == null)
-            //{
-            //    MessageBox.Show("Please enter valid end date");
-            //    return;
-            //}
-            //else if (numMinComp.Value < 0)
-            //{
-            //    MessageBox.Show("Please enter valid minimum number of competitors");
-            //    return;
-            //}
-            //else if (numMaxComp.Value <= 0)
-            //{
-            //    MessageBox.Show("Please enter valid maximum number of competitors");
-            //    return;
-            //}
-            //else if (cbTournamentSystem.SelectedItem == "")
-            //{
-            //    MessageBox.Show("Please enter valid tournament system");
-            //    return;
-            //}
+            if (string.IsNullOrEmpty( tbName.Text))
+            {
+                MessageBox.Show("Please enter valid name");
+                return;
+            }
+            else if (string.IsNullOrEmpty(tbDescription.Text))
+            {
+                MessageBox.Show("Please enter valid description");
+                return;
+            }
+            else if (string.IsNullOrEmpty(tbAdress.Text))
+            {
+                MessageBox.Show("Please enter valid adress");
+                return;
+            }
+            else if (dtpStartDate.Value == null)
+            {
+                MessageBox.Show("Please enter valid start date");
+                return;
+            }
+            else if (dtpEndDate.Value == null)
+            {
+                MessageBox.Show("Please enter valid end date");
+                return;
+            }
+            else if (numMinComp.Value < 0)
+            {
+                MessageBox.Show("Please enter valid minimum number of competitors");
+                return;
+            }
+            else if (numMaxComp.Value <= 0)
+            {
+                MessageBox.Show("Please enter valid maximum number of competitors");
+                return;
+            }
+            else if (cbTournamentSystem.SelectedItem == "")
+            {
+                MessageBox.Show("Please enter valid tournament system");
+                return;
+            }
 
             try
             {
@@ -157,6 +157,11 @@ namespace TournamentDesktopApplication.Forms
         private void btnCancelTournament_Click(object sender, EventArgs e)
         {
             Tournament t = (Tournament)lbTournaments.SelectedItem;
+            if (t is null)
+            {
+                MessageBox.Show("Please, select a tournament first!");
+                return;
+            }
             Status status = Status.CANCELED;
 
             if (t.Status == Status.COMPLETED || t.Status == Status.SCHEDULED)
@@ -186,20 +191,41 @@ namespace TournamentDesktopApplication.Forms
 
         private void btnEditTournament_Click(object sender, EventArgs e)
         {
-            Tournament currTournament = (Tournament)lbTournaments.SelectedItem;
-            if (currTournament.Status == Status.UPCOMING)
+            try
             {
-                SystemDivider sd = new SystemDivider();
-                Tournament t = new Tournament(Convert.ToInt32(tbID.Text), tbName.Text, tbDescription.Text, dtpStartDate.Value, dtpEndDate.Value, (int)numMinComp.Value, (int)numMaxComp.Value, tbAdress.Text, sd.DivideTournamentSystems(cbTournamentSystem.Text), currTournament.Status);
-                tm.EditTournament(t);
-                MessageBox.Show($"Successful update of tournament {t.Name} with ID: {t.Id}");
-                LoadTournament();
+                Tournament currTournament = (Tournament)lbTournaments.SelectedItem;
+                if (currTournament is null)
+                {
+                    MessageBox.Show("Please, select a tournament first!");
+                    return;
+                }
+                if (currTournament.Status == Status.UPCOMING)
+                {
+                    SystemDivider sd = new SystemDivider();
+                    Tournament t = new Tournament(Convert.ToInt32(tbID.Text), tbName.Text, tbDescription.Text, dtpStartDate.Value, dtpEndDate.Value, (int)numMinComp.Value, (int)numMaxComp.Value, tbAdress.Text, sd.DivideTournamentSystems(cbTournamentSystem.Text), currTournament.Status);
+                    tm.EditTournament(t);
+                    MessageBox.Show($"Successful update of tournament {t.Name} with ID: {t.Id}");
+                    LoadTournament();
+                }
+                else
+                {
+                    MessageBox.Show("Too late to update the tournament! You can only update it when it is upcoming(Open for refistration)!");
+                    return;
+                }
             }
-            else
+            catch (MyException ex)
             {
-                MessageBox.Show("Too late to update the tournament! You can only update it when it is upcoming(Open for refistration)!");
+
+                MessageBox.Show(ex.Message);
                 return;
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+                return;
+            }
+            
         }
 
         private void rbAll_CheckedChanged(object sender, EventArgs e)

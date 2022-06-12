@@ -28,7 +28,7 @@ namespace DAL
 
                 conn.Open();
                 n = command.ExecuteNonQuery();
-               // t.AssignCompetitor(u);
+                // t.AssignCompetitor(u);
 
             }
             catch (MySqlException ex)
@@ -48,12 +48,11 @@ namespace DAL
         {
             string sqlStatement = "SELECT * FROM tournament; SELECT ut.tournamentId, ut.userId, u.fName, u.lName, u.email, u.adress, u.password, u.role  FROM user_at_tournament as ut inner join tournament_user as u on ut.userId=u.id ;";
             MySqlCommand command = new MySqlCommand(sqlStatement, conn);
-            UserDB userDB = new UserDB();
-            conn.Open();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             adapter.SelectCommand = command;
             try
             {
+                conn.Open();
                 using (DataSet dataSet = new DataSet())
                 {
                     adapter.Fill(dataSet);

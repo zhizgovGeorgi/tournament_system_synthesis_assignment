@@ -10,7 +10,7 @@ namespace LogicLayer
     {
         void AddMatch(List<Match> matches, Tournament t);
 
-        void GetMatchesForTournaament(Tournament t);
+        void GetMatchesForTournament(Tournament t);
         void SetScore(Match m, Tournament t);
     }
 }

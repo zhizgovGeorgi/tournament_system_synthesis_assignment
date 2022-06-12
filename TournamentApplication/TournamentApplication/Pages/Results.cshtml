@@ -1,0 +1,24 @@
+﻿@page
+@model TournamentWebApplication.Pages.ResultsModel
+@{
+}
+@using LogicLayer;
+@inject IMatchManager mManager;
+@inject ITournamentManager tManager;
+
+<div class="tournaments">
+    @foreach (Tournament t in tManager.GetAllTournaments().FindAll(x => x.Status == Status.COMPLETED))
+    {
+        <form method="post">
+                <div class="tournament">
+                    <div class="tournInfo">
+                        <p>@t.Name</p>
+                        <p>@t.StartDate.ToShortDateString()</p>
+                    </div>
+                    <div class="float">
+                        <a class="button" href="TournamentWithMatches?id=@t.Id" type="submit" value="Check">check</a>
+                    </div>
+                </div>
+            </form>
+    }
+</div>

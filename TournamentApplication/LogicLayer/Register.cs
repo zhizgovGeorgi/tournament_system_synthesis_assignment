@@ -22,7 +22,7 @@ namespace LogicLayer
         public string Adress { get; set; }
 
 
-        [Required(ErrorMessage = "Please enter password")]
+        [Required(ErrorMessage = "Please enter password")][MinLength(6, ErrorMessage ="Password should contain at least 6 characters!")]
         public string Password { get; set; }
     }
 }

@@ -10,6 +10,7 @@
         <form method="post">
 
 
+            <span>@ViewData["Message"]</span>
             <div class="register">
                 <label> Name:</label> <span asp-validation-for="register.FName"></span>
                 <input asp-for="register.FName" id="name">
@@ -21,6 +22,7 @@
                 <input asp-for="register.Adress" id="adress">
                 <label> Password:</label> <span asp-validation-for="register.Password"></span>
                 <input type="password" asp-for="register.Password" id="password">
+
                 <button type="submit">Register</button>
 
 
@@ -38,5 +40,5 @@
 
 </html>
 @section scripts{
-    <partial name="_ValidationScriptsPartial" />
+<partial name="_ValidationScriptsPartial" />
 }

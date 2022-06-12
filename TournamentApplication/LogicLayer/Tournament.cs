@@ -23,8 +23,28 @@ namespace LogicLayer
 
 
         public int Id { get { return this.id; } }
-        public string Name { get { return this.name; } }
-        public string Description { get { return this.description; } }
+        public string Name 
+        { 
+            get { return this.name; }
+            private set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new MyException("Name cannot be empty");
+                }
+                this.name = value;
+            }
+        }
+        public string Description { get { return this.description; }
+            private set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new MyException("Description cannot be empty");
+                }
+                this.description = value;
+            }
+        }
         public DateTime StartDate
         {
             get { return this.startDate; }
@@ -77,7 +97,16 @@ namespace LogicLayer
                 this.maxCompetitors = value;
             }
         }
-        public string Adress { get { return this.adress; } }
+        public string Adress { get { return this.adress; }
+            private set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new MyException("Adress cannot be empty");
+                }
+                this.adress = value;
+            }
+        }
         public TournamentSystem TournamentSystem { get { return this.tournamentSystem; } }
         public List<User> Competitors { get { return this.competitors; } }
         public List<Match> Matches { get { return this.matches; } }
@@ -88,33 +117,33 @@ namespace LogicLayer
         public Tournament(int id, string name, string description, DateTime startDate, DateTime endDate, int minCompetitors, int maxCompetitors, string adress, TournamentSystem tournamentSystem, Status status)
         {
             this.id = id;
-            this.name = name;
-            this.description = description;
+            this.Name = name;
+            this.Description = description;
             this.startDate = startDate;
-            this.endDate = endDate;
-            this.minCompetitors = minCompetitors;
-            this.maxCompetitors = maxCompetitors;
-            this.adress = adress;
+            this.EndDate = endDate;
+            this.MinCompetitors = minCompetitors;
+            this.MaxCompetitors = maxCompetitors;
+            this.Adress = adress;
             this.tournamentSystem = tournamentSystem;
             this.status = status;
         }
 
         public Tournament(string name, string description, DateTime startDate, DateTime endDate, int minCompetitors, int maxCompetitors, string adress, TournamentSystem tournamentSystem, Status status)
         {
-            this.name = name;
-            this.description = description;
+            this.Name = name;
+            this.Description = description;
             this.StartDate = startDate;
             this.EndDate = endDate;
             this.MinCompetitors = minCompetitors;
             this.MaxCompetitors = maxCompetitors;
-            this.adress = adress;
+            this.Adress = adress;
             this.tournamentSystem = tournamentSystem;
             this.status = status;
         }
 
 
 
-        public void AssignCompetitor(User u)
+        public void AssignPlayer(User u)
         {
             competitors.Add(u);
         }
@@ -130,9 +159,14 @@ namespace LogicLayer
             this.matches = matches;
 
         }
+
+        public void UpdateStatus(Status s)
+        {
+            this.status = s;
+        }
         public override string ToString()
         {
-            return $"ID: {Id} Name: {Name}";
+            return $"{Name}";
         }
 
     }

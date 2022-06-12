@@ -64,7 +64,7 @@ namespace UnitTests.EntytiTests
             List<User> users = new List<User>();
             users.Add(user);
             tournament.AssignPlayers(users);
-            tournament.AssignCompetitor(user2);
+            tournament.AssignPlayer(user2);
             // Assert.IsNotNull(user);
             Assert.AreEqual(2, tournament.Competitors.Count);
         }

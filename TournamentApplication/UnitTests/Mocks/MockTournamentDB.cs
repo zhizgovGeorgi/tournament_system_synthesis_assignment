@@ -26,7 +26,7 @@ namespace UnitTests.Mocks
 
         public int GetNextID()
         {
-            return 0;
+            return 1;
         }
 
         public void SignForTournament(Tournament t, User u)
